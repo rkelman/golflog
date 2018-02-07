@@ -12,7 +12,7 @@ angular.module('stopWatchApp', [])
             var mins = parseInt(elapsed / 60000,10);
             elapsed %= 60000;
             var secs = parseInt(elapsed / 1000,10);
-            var ms = parseInt(elapsed/100,10);
+            var ms = parseInt((elapsed/100)%10);
 
             return hours + ':' + mins + ':' + secs + '.' + ms;
         }
