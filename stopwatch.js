@@ -83,6 +83,12 @@ angular.module('stopWatchApp', [])
             self.running = false;
         };
 
+        self.saveTimer = function(){
+          if (self.running === false) {
+            pushToLog(currentTime - startTime);
+          }
+        };
+
         self.resetTimer = function(){
           startTime = new Date().getTime();
           options.elapsedTime.setTime(0);
