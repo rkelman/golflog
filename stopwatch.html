@@ -10,8 +10,9 @@
         <div bb-stopwatch options="options">
             <div class="container">
               <div class="stopWatch numbers">
-                {{options.elapsedTime | stopwatchTime}}
-               </div>
+                <!--{{options.elapsedTime | stopwatchTime}}-->
+                  {{options.stopwatchTime}}
+               <div>
               <button class="btn" ng-click="startTimer()">Start</button>
               <button class="btn" ng-click="stopTimer()">Stop</button>
               <button class="btn" ng-click="resetTimer()">Reset</button>
