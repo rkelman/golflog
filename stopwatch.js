@@ -78,7 +78,7 @@ angular.module('stopWatchApp', [])
             }
             self.updateTime();
             offset = offset + currentTime - startTime;
-            pushToLog(currentTime - startTime);
+            //pushToLog(currentTime - startTime);
             $interval.cancel(interval);
             self.running = false;
         };
