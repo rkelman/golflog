@@ -30,6 +30,7 @@ angular.module('stopWatchApp', [])
             scope.startTimer = stopwatchService.startTimer;
             scope.stopTimer = stopwatchService.stopTimer;
             scope.resetTimer = stopwatchService.resetTimer;
+            scope.saveTimer = stopwatchService.saveTimer;
 
         }
     };
