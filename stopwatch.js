@@ -1,6 +1,7 @@
 angular.module('stopWatchApp', [])
 .controller('stopWatchDemoCtrl', ['$scope', function($scope){
-    $scope.stopwatches = [{ log: []},{interval: 1000, log: []},{interval: 2000, log: []}];
+    $scope.stopwatches = [{ log: []}];
+    //$scope.stopwatches = [{ log: []},{interval: 1000, log: []},{interval: 2000, log: []}];
 }])
 .filter('stopwatchTime', function () {
     return function (input) {

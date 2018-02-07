@@ -19,7 +19,8 @@
             </div>
         </div>
         <div class="log" ng-repeat="log in options.log">
-            {{ log/1000 }} seconds
+          <!--  {{ log/1000 }} seconds -->
+          {{ options.elapsedTime | stopwatchTime }}
         </div>
     </div>
 </div>
