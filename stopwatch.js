@@ -10,12 +10,14 @@ angular.module('stopWatchApp', [])
             var elapsed = input.getTime();
             var hours = parseInt(elapsed / 3600000,10);
             elapsed %= 3600000;
-            var mins = parseInt(elapsed / 60000,10);
+            var mins = parseInt(elapsed / 60000,10).padstart(2,"0");
             elapsed %= 60000;
-            var secs = parseInt(elapsed / 1000,10);
+            var secs = parseInt(elapsed / 1000,10).padstart(2,"0");
             var ms = parseInt((elapsed/100)%10);
 
             return hours + ':' + mins + ':' + secs + '.' + ms;
+
+
         }
     };
 })
