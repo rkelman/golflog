@@ -10,9 +10,9 @@ angular.module('stopWatchApp', [])
             var elapsed = input.getTime();
             var hours = parseInt(elapsed / 3600000,10);
             elapsed %= 3600000;
-            var mins = parseInt(elapsed / 60000,10);
+            var mins = (parseInt(elapsed / 60000,10)).pad(2);
             elapsed %= 60000;
-            var secs = parseInt(elapsed / 1000,10);
+            var secs = (parseInt(elapsed / 1000,10)).pad(2);
             var ms = parseInt((elapsed/100)%10);
 
             return hours + ':' + mins + ':' + secs + '.' + ms;
@@ -101,6 +101,12 @@ angular.module('stopWatchApp', [])
         self.cancelTimer = function(){
           $interval.cancel(interval);
         };
+
+        Number.prototype.pad = function(size) {
+          var s = String(this);
+          while (s.length < (size || 2)) {s = "0" + s;}
+          return s;
+        }
 
         return self;
 
