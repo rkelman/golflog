@@ -6,10 +6,10 @@ $db = new DB_Functions();
 // json response array
 $response = array("error" => FALSE);
 
-# Get JSON as a string
+// Get JSON as a string
 $json_str = file_get_contents('php://input');
 
-# Get as an object
+// Get as an object
 $json_obj = json_decode($json_str);
 
 if (isset($json_obj['name']) && isset($json_obj['email']) && isset($json_obj['password'])) {
