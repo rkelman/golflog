@@ -35,7 +35,9 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
             // user failed to store
             $response["error"] = TRUE;
             $response["error_msg"] = "Unknown error occurred in registration!";
-            print_r($_POST);
+            $response["name"]=$name;
+            $response["email"]=$email;
+            $response["password"]=$password;
             echo json_encode($response);
         }
     }
