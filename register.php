@@ -12,9 +12,9 @@ $json_str = file_get_contents('php://input');
 // Get as an object
 $json_obj = json_decode($json_str, true);
 
-print_r($json_obj);
+//print_r($json_obj);
 
-if (isset($json_obj['name']) && isset($json_obj['email']) && isset($json_obj['password'])) {
+if (isset($json_obj->'name') && isset($json_obj['email']) && isset($json_obj['password'])) {
 
     // receiving the post params
     $name = $json_obj['name'];
@@ -45,16 +45,14 @@ if (isset($json_obj['name']) && isset($json_obj['email']) && isset($json_obj['pa
             $response["error_msg"] = "Unknown error occurred in registration!";
             $response["name"]=$name;
             $response["email"]=$email;
-            $response["password"]=$password;
-            echo json_encode($response);
         }
     }
 } else {
     $response["error"] = TRUE;
     $response["error_msg"] = "Required parameters (name, email or password) is missing!";
-    $response["name"]=$name;
-    $response["email"]=$email;
-    $response["password"]=$password;
+    $response["name"]=$json_obj->'name';
+    $response["email"]=$json_obj->'email';
+    $response["password"]=$json_obj->'password';
     echo json_encode($response);
 }
 ?>
