@@ -39,7 +39,7 @@
             return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
         }
 
-        public function createNewRegisterUser($username, $password, $email){
+        public function createNewRegisterUser($firstName, $lastName, $password, $email){
 
             $isExisting = $this->isEmailUsernameExist($email);
             if($isExisting){
@@ -49,7 +49,9 @@
 
               $isValid = $this->isValidEmail($email);
               if($isValid) {
-                $query = "Insert into ".$this->db_table." (firstName, lastName, encrypted_password, email, created_at, updated_at) values ('$firstName', '$lastNname', '$password', '$email', NOW(), NOW())";
+                $query = "Insert into ".$this->db_table."
+                  (firstName, lastName, encrypted_password, email, created_at, updated_at) values
+                  ('$firstName', '$lastNname', '$password', '$email', NOW(), NOW())";
                 $inserted = mysqli_query($conn, $query);
 
                 if($inserted == 1){
@@ -68,9 +70,7 @@
                 }
 
             }
-
             return $json;
-
         }
 
         public function loginUsers($email, $password){
