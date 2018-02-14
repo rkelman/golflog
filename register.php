@@ -52,7 +52,7 @@ if (isset($json_obj['name']) && isset($json_obj['email']) && isset($json_obj[0][
 } else {
     $response["error"] = TRUE;
     $response["error_msg"] = "Required parameters (name, email or password) is missing!";
-    $response["name"]=$json_obj[0]['name'];
+    $response["name"]=$json_obj['name'];
     $response["email"]=$json_obj[0]['email'];
     $response["password"]=$json_obj[0]['password'];
     echo json_encode($response);
