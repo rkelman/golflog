@@ -40,8 +40,8 @@ include_once('../connection.php');
 
     /**
      * Get user by email and password
-     *//*
-    getUserByEmailPassword($email, $password) {
+     */
+    function getUserByEmailPassword($email, $password) {
       $conn = connectDB();
       $stmt = "SELECT * from glUsers WHERE email = '".$email."'";
 
