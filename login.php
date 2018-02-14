@@ -22,7 +22,8 @@ if (isset($json_obj['email']) && isset($json_obj['password'])) {
         // use is found
         $response["error"] = FALSE;
         $response["uid"] = $user["unique_id"];
-        $response["user"]["name"] = $user["name"];
+        $response["user"]["firstname"] = $user["firstName"];
+        $response["user"]["lastname"] = $user["lastName"];
         $response["user"]["email"] = $user["email"];
         $response["user"]["created_at"] = $user["created_at"];
         $response["user"]["updated_at"] = $user["updated_at"];
@@ -30,13 +31,13 @@ if (isset($json_obj['email']) && isset($json_obj['password'])) {
     } else {
         // user is not found with the credentials
         $response["error"] = TRUE;
-        $response["error_msg"] = "Login credentials are wrong. Please try again!";
+        $response["error_msg"] = "Login credentials are wrong. Please try again.";
         echo json_encode($response);
     }
 } else {
     // required post params is missing
     $response["error"] = TRUE;
-    $response["error_msg"] = "Required parameters email or password is missing!";
+    $response["error_msg"] = "Required parameters email or password is missing.";
     echo json_encode($response);
 }
 ?>

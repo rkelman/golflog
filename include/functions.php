@@ -40,7 +40,7 @@ include_once('../connection.php');
     /**
      * Get user by email and password
      */
-  /*  getUserByEmailAndPassword($email, $password) {
+    getUserByEmailAndPassword($email, $password) {
         $conn = connectDB();
 
         $stmt = "SELECT * FROM users WHERE email = '".$email."'";
@@ -107,9 +107,9 @@ include_once('../connection.php');
      * @param salt, password
      * returns hash string
      */
-/*    function checkhashSSHA($salt, $password) {
+    function checkhashSSHA($salt, $password) {
         $hash = base64_encode(sha1($password . $salt, true) . $salt);
         return $hash;
     }
-*/
+
 ?>
