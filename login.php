@@ -18,7 +18,7 @@ if (isset($json_obj['email']) && isset($json_obj['password'])) {
     // get the user by email and password
     $user = getUserByEmailAndPassword($email, $password);
 
-    if ($user != false) {
+    if ($user["error"] == FALSE) {
         // use is found
         $response["error"] = FALSE;
         $response["uid"] = $user["id"];
@@ -31,7 +31,7 @@ if (isset($json_obj['email']) && isset($json_obj['password'])) {
     } else {
         // user is not found with the credentials
         $response["error"] = TRUE;
-        $response["error_msg"] = "Login credentials are wrong. Please try again.";
+        $response["error_msg"] = $user["error_msg"];
         echo json_encode($response);
     }
 } else {

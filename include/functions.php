@@ -58,14 +58,19 @@ include_once('../connection.php');
           if ($encrypted_password == $hash) {
             // user authentication details are correct
             $conn->close();
+            $user["error"]= FALSE;
             return $user;
           } else {
             $conn->close();
-            return NULL;
+            $user["error"]=TRUE;
+            $user["error_msg"]="Password was incorrect for that account."
+            return $user;
           }
         } else {
             $conn->close();
-            return NULL;
+            $user["error"]=TRUE;
+            $user["error_msg"]="No user with that email found."
+            return $user;
         }
     }
 
