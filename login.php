@@ -37,7 +37,7 @@ if (isset($json_obj['email']) && isset($json_obj['password'])) {
 } else {
     // required post params is missing
     $response["error"] = TRUE;
-    $response["error_msg"] = "Required parameters email or password is missing.";
+    $response["error_msg"]["message"] = "Required parameters email or password is missing.";
     $response["error_msg"]["email"]=$email;
     $response["error_msg"]["password"]=$password;
     echo json_encode($response);
