@@ -15,12 +15,12 @@ $json_obj = json_decode($json_str, TRUE);
 //print_r($json_obj);
 //print $json_obj->{'name'};
 
-if (isset($json_obj['name']) && isset($json_obj['email']) && isset($json_obj[0]['password'])) {
+if (isset($json_obj['name']) && isset($json_obj['email']) && isset($json_obj['password'])) {
 
     // receiving the post params
-    $name = $json_obj[0]['name'];
-    $email = $json_obj[0]['email'];
-    $password = $json_obj[0]['password'];
+    $name = $json_obj['name'];
+    $email = $json_obj['email'];
+    $password = $json_obj['password'];
 
     // check if user is already existed with the same email
     if ($db->isUserExisted($email)) {
@@ -53,8 +53,8 @@ if (isset($json_obj['name']) && isset($json_obj['email']) && isset($json_obj[0][
     $response["error"] = TRUE;
     $response["error_msg"] = "Required parameters (name, email or password) is missing!";
     $response["name"]=$json_obj['name'];
-    $response["email"]=$json_obj[0]['email'];
-    $response["password"]=$json_obj[0]['password'];
+    $response["email"]=$json_obj['email'];
+    $response["password"]=$json_obj['password'];
     echo json_encode($response);
 }
 ?>
