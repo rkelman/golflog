@@ -58,7 +58,7 @@ include_once('../connection.php');
           if ($encrypted_password == $hash) {
             // user authentication details are correct
             $conn->close();
-            $user["error"]= FALSE;
+            //$user["error"]= FALSE;
             return $user;
           } else {
             $conn->close();
