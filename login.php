@@ -21,7 +21,7 @@ if (isset($json_obj['email']) && isset($json_obj['password'])) {
     if ($user != false) {
         // use is found
         $response["error"] = FALSE;
-        $response["uid"] = $user["unique_id"];
+        $response["uid"] = $user["id"];
         $response["user"]["firstname"] = $user["firstName"];
         $response["user"]["lastname"] = $user["lastName"];
         $response["user"]["email"] = $user["email"];
