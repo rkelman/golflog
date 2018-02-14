@@ -19,8 +19,8 @@ if (isset($json_obj[0]['name']) && isset($json_obj[0]['email']) && isset($json_o
 
     // receiving the post params
     $name = $json_obj[0]['name'];
-    $email = $json_obj->{'email'};
-    $password = $json_obj->{'password'};
+    $email = $json_obj[0]['email'];
+    $password = $json_obj[0]['password'];
 
     // check if user is already existed with the same email
     if ($db->isUserExisted($email)) {
