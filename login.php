@@ -1,18 +1,22 @@
 <?php
-require_once 'include/DB_Functions.php';
-$db = new DB_Functions();
+require_once 'include/functions.php';
 
 // json response array
 $response = array("error" => FALSE);
 
-if (isset($_POST['email']) && isset($_POST['password'])) {
+// Get JSON as a string
+$json_str = file_get_contents('php://input');
 
+// Get as an object
+$json_obj = json_decode($json_str, TRUE);
+
+if (isset($json_obj['email']) && isset($json_obj['password'])) {
     // receiving the post params
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = $json_obj['email'];
+    $password = $json_obj['password'];
 
     // get the user by email and password
-    $user = $db->getUserByEmailAndPassword($email, $password);
+    $user = getUserByEmailAndPassword($email, $password);
 
     if ($user != false) {
         // use is found
