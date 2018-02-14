@@ -15,7 +15,7 @@ $json_obj = json_decode($json_str, TRUE);
 //print_r($json_obj);
 //print $json_obj->{'name'};
 
-if (isset($json_obj['name']) && isset($json_obj[0]['email']) && isset($json_obj['password'])) {
+if (isset($json_obj['name']) && isset($json_obj['email']) && isset($json_obj['password'])) {
 
     // receiving the post params
     $name = $json_obj['name'];
@@ -28,7 +28,7 @@ if (isset($json_obj['name']) && isset($json_obj[0]['email']) && isset($json_obj[
     if ($db->isUserExisted($email)) {
         // user already existed
         $response["error"] = TRUE;
-        $response["error_msg"] = "User already existed with " . $email;
+        $response["error_msg"] = "User already existed with ".$email;
         echo json_encode($response);
     } else {
         $user = $db->storeUser($name, $email, $password);
