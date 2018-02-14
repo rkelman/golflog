@@ -23,6 +23,7 @@ include_once('../connection.php');
             $stmt = "SELECT * FROM glUsers WHERE email = '".$email."'";
 
             $qyUser=$conn->query($stmt);
+
             if ($qyUser->num_rows > 0) {
               $user = $qyUser->fetch_assoc();
               $conn->close();
@@ -39,14 +40,14 @@ include_once('../connection.php');
 
     /**
      * Get user by email and password
-     *//*
-    getUserByEmailAndPassword($email, $password) {
-        $conn = connectDB();
+     */
+    getUserByEmailPassword($email, $password) {
+      $conn = connectDB();
+      $stmt = "SELECT * from glUsers WHERE email = '".$email."'";
 
-        $stmt = "SELECT * FROM glUsers WHERE email = '".$email."'";
+      $qyUser=$conn->query($stmt);
 
-        $qyUser=$conn->query($stmt);
-        if ($qyUser->num_rows > 0) {
+      if ($qyUser->num_rows > 0) {
           $user = $qyUser->fetch_assoc();
 
           // verifying user password
@@ -62,32 +63,32 @@ include_once('../connection.php');
           } else {
             $conn->close();
             $user["error"]=TRUE;
-            $user["error_msg"]="Password was incorrect for that account.";
+            $user["error_msg"]='Password was incorrect for that account.';
             return $user;
           }
         } else {
             $conn->close();
             $user["error"]=TRUE;
-            $user["error_msg"]="No user with that email found.";
+            $user["error_msg"]='No user with that email found.';
             return $user;
         }
     }
 
     /**
-     * Check user is existed or not
+     * Check user is registered or not
      */
     function isUserRegistered($email) {
         $conn = connectDB();
-        $stmt = "SELECT email from glUsers WHERE email = '".$email."'";
+        $stmt = "SELECT * from glUsers WHERE email = '".$email."'";
 
         $qyUser=$conn->query($stmt);
 
         if ($qyUser->num_rows > 0) {
-            // user existed
+            // user registered
             $conn->close();
             return true;
         } else {
-            // user not existed
+            // user not registered
             $conn->close();
             return false;
         }
