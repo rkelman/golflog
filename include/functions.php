@@ -74,7 +74,7 @@ include_once('../connection.php');
      */
     function isUserRegistered($email) {
         $conn = connectDB();
-        $stmt = "SELECT email from users WHERE email = '".$email."'";
+        $stmt = "SELECT email from glUsers WHERE email = '".$email."'";
 
         $qyUser=$conn->query($stmt);
 
