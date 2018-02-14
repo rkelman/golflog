@@ -27,7 +27,7 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
     if (isUserRegistered($email)) {
         // user already existed
         $response["error"] = TRUE;
-        $response["error_msg"] = "User already existed with ".$email;
+        $response["error_msg"] = "User already exists with email: ".$email;
         echo json_encode($response);
     } else {
       /*  $user = storeUser($firstname, $lastname, $email, $password);
