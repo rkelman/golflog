@@ -110,10 +110,10 @@ include_once('../connection.php');
      * Decrypting password
      * @param salt, password
      * returns hash string
-     */
+     *//*
     function checkhashSSHA($salt, $password) {
         $hash = base64_encode(sha1($password . $salt, true) . $salt);
         return $hash;
     }
-
+*/
 ?>
