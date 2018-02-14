@@ -46,6 +46,7 @@ if (isset($json_obj[0]['name']) && isset($json_obj[0]['email']) && isset($json_o
             $response["error_msg"] = "Unknown error occurred in registration!";
             $response["name"]=$name;
             $response["email"]=$email;
+            echo json_encode($response);
         }
     }
 } else {
