@@ -4,7 +4,7 @@ include_once('../connection.php');
      * Storing new user
      * returns user details
      */
-  /*  function storeUser($firstname, $lastname, $email, $password) {
+    function storeUser($firstname, $lastname, $email, $password) {
         $hash = hashSSHA($password);
         $encrypted_password = $hash["encrypted"]; // encrypted password
         $salt = $hash["salt"]; // salt
@@ -18,7 +18,7 @@ include_once('../connection.php');
 
         $sqlIns=$conn->query($sql);
 
-        // check for successful store
+  /*      // check for successful store
         if ($sqlIns) {
             $stmt = "SELECT * FROM glUsers WHERE email = '".$email."'";
 
@@ -34,7 +34,7 @@ include_once('../connection.php');
         } else {
           $conn->close();
           return false;
-        }
+        } */
     }
 
     /**
@@ -94,7 +94,7 @@ include_once('../connection.php');
      * @param password
      * returns salt and encrypted password
      */
-/*    function hashSSHA($password) {
+    function hashSSHA($password) {
         $salt = sha1(rand());
         $salt = substr($salt, 0, 10);
         $encrypted = base64_encode(sha1($password . $salt, true) . $salt);
