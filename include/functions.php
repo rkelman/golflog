@@ -39,7 +39,7 @@ include_once('../connection.php');
 
     /**
      * Get user by email and password
-     */
+     *//*
     getUserByEmailAndPassword($email, $password) {
         $conn = connectDB();
 

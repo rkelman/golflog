@@ -16,7 +16,7 @@ if (isset($json_obj['email']) && isset($json_obj['password'])) {
     $password = $json_obj['password'];
 
     // get the user by email and password
-    $user = getUserByEmailAndPassword($email, $password);
+    //$user = getUserByEmailAndPassword($email, $password);
 
     if ($user["error"] == FALSE) {
         // use is found
