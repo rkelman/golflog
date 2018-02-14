@@ -24,12 +24,12 @@ if (isset($json_obj['name']) && isset($json_obj[0]['email']) && isset($json_obj[
 
     // check if user is already existed with the same email
     if ($db->isUserExisted($email)) {
-        // user already existed
+        echo "user already existed";
         $response["error"] = TRUE;
         $response["error_msg"] = "User already existed with " . $email;
         echo json_encode($response);
     } else {
-        // create a new user
+        echo "create a new user"
         $user = $db->storeUser($name, $email, $password);
         if ($user) {
             // user stored successfully
