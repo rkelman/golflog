@@ -18,7 +18,7 @@ include_once('../connection.php');
 
         $sqlIns=$conn->query($sql);
 
-  /*      // check for successful store
+        // check for successful store
         if ($sqlIns) {
             $stmt = "SELECT * FROM glUsers WHERE email = '".$email."'";
 
@@ -34,7 +34,7 @@ include_once('../connection.php');
         } else {
           $conn->close();
           return false;
-        } */
+        }
     }
 
     /**
