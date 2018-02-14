@@ -30,8 +30,8 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
         $response["error_msg"] = "User already existed with ".$email;
         echo json_encode($response);
     } else {
-        $user = storeUser($firstname, $lastname, $email, $password);
-        if ($user) {
+      /*  $user = storeUser($firstname, $lastname, $email, $password);
+        if ($user) { */
             // user stored successfully
             $response["error"] = FALSE;
             $response["uid"] = $user["id"];
@@ -40,7 +40,7 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
             $response["user"]["created_at"] = $user["created_at"];
             $response["user"]["updated_at"] = $user["updated_at"];
             echo json_encode($response);
-        } else {
+    /*    } else {
             // user failed to store
             $response["error"] = TRUE;
             $response["error_msg"] = "Unknown error occurred in registration";
@@ -48,7 +48,7 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
             $response["lastname"]=$lastname;
             $response["email"]=$email;
             echo json_encode($response);
-        }
+        }  */
     }
 } else {
     $response["error"] = TRUE;

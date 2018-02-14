@@ -94,7 +94,7 @@ include_once('../connection.php');
      * @param password
      * returns salt and encrypted password
      */
-    function hashSSHA($password) {
+/*    function hashSSHA($password) {
         $salt = sha1(rand());
         $salt = substr($salt, 0, 10);
         $encrypted = base64_encode(sha1($password . $salt, true) . $salt);
@@ -107,9 +107,9 @@ include_once('../connection.php');
      * @param salt, password
      * returns hash string
      */
-    function checkhashSSHA($salt, $password) {
+/*    function checkhashSSHA($salt, $password) {
         $hash = base64_encode(sha1($password . $salt, true) . $salt);
         return $hash;
     }
-
+*/
 ?>
