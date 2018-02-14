@@ -14,7 +14,7 @@ $json_obj = json_decode($json_str, TRUE);
 //print_r($json_obj);
 //print $json_obj->{'name'};
 
-if (isset($json_obj['firstname']) && $json_obj[0]['lastname']) && isset($json_obj['email']) && isset($json_obj['password'])) {
+if (isset($json_obj['firstname']) && isset($json_obj[0]['lastname']) && isset($json_obj['email']) && isset($json_obj['password'])) {
 
     // receiving the post params
     $firstname = $json_obj['firstname'];
