@@ -1,11 +1,10 @@
 <?php
-include '../connection.php';
+include_once('../connection.php');
     /**
      * Storing new user
      * returns user details
      */
     function storeUser($firstname, $lastname, $email, $password) {
-        $uuid = uniqid('', true);
         $hash = hashSSHA($password);
         $encrypted_password = $hash["encrypted"]; // encrypted password
         $salt = $hash["salt"]; // salt
@@ -13,9 +12,9 @@ include '../connection.php';
         $conn = connectDB();
 
         $sql = "INSERT INTO glUsers
-           (firstName, lastName, email, encrypted_password, created_at, updated_at)
+           (firstName, lastName, email, encrypted_password, salt, created_at, updated_at)
            VALUES
-           ('".$firstname."', '".$lastname."', '".$email."', '".$encrypted_password."', NOW(), now())";
+           ('".$firstname."', '".$lastname."', '".$email."', '".$encrypted_password."', '".$salt."', NOW(), now())";
 
         $sqlIns=$conn->query($sql);
 
@@ -43,6 +42,7 @@ include '../connection.php';
      */
     getUserByEmailAndPassword($email, $password) {
         $conn = connectDB();
+
         $stmt = "SELECT * FROM users WHERE email = '".$email."'";
 
         $qyUser=$conn->query($stmt);
