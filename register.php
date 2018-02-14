@@ -22,14 +22,15 @@ if (isset($json_obj['name']) && isset($json_obj[0]['email']) && isset($json_obj[
     $email = $json_obj['email'];
     $password = $json_obj['password'];
 
+    echo $name." ".$email." ".$password;
+
     // check if user is already existed with the same email
     if ($db->isUserExisted($email)) {
-        echo "user already existed";
+        // user already existed
         $response["error"] = TRUE;
         $response["error_msg"] = "User already existed with " . $email;
         echo json_encode($response);
     } else {
-        echo "create a new user"
         $user = $db->storeUser($name, $email, $password);
         if ($user) {
             // user stored successfully
@@ -43,7 +44,7 @@ if (isset($json_obj['name']) && isset($json_obj[0]['email']) && isset($json_obj[
         } else {
             // user failed to store
             $response["error"] = TRUE;
-            $response["error_msg"] = "Unknown error occurred in registration!";
+            $response["error_msg"] = "Unknown error occurred in registration";
             $response["name"]=$name;
             $response["email"]=$email;
             echo json_encode($response);
@@ -51,7 +52,7 @@ if (isset($json_obj['name']) && isset($json_obj[0]['email']) && isset($json_obj[
     }
 } else {
     $response["error"] = TRUE;
-    $response["error_msg"] = "Required parameters (name, email or password) is missing!";
+    $response["error_msg"] = "Required parameters (name, email or password) is missing";
     $response["name"]=$json_obj['name'];
     $response["email"]=$json_obj['email'];
     $response["password"]=$json_obj['password'];
