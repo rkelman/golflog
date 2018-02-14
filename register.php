@@ -13,6 +13,7 @@ $json_str = file_get_contents('php://input');
 $json_obj = json_decode($json_str);
 
 //print_r($json_obj);
+print $json_obj->{'name'};
 
 if (isset($json_obj->{'name'}) && isset($json_obj['email']) && isset($json_obj['password'])) {
 
