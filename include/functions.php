@@ -47,7 +47,6 @@ include_once('../connection.php');
 
         $qyUser=$conn->query($stmt);
         if ($qyUser->num_rows > 0) {
-
           $user = $qyUser->fetch_assoc();
 
           // verifying user password
@@ -63,13 +62,13 @@ include_once('../connection.php');
           } else {
             $conn->close();
             $user["error"]=TRUE;
-            $user["error_msg"]="Password was incorrect for that account."
+            $user["error_msg"]="Password was incorrect for that account.";
             return $user;
           }
         } else {
             $conn->close();
             $user["error"]=TRUE;
-            $user["error_msg"]="No user with that email found."
+            $user["error_msg"]="No user with that email found.";
             return $user;
         }
     }
