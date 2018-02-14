@@ -112,6 +112,4 @@ include_once('../connection.php');
         return $hash;
     }
 
-}
-
 ?>
