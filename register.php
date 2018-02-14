@@ -15,7 +15,7 @@ $json_obj = json_decode($json_str, true);
 //print_r($json_obj);
 //print $json_obj->{'name'};
 
-if (isset($json_obj[0]['name']) && isset($json_obj[0]['email']) && isset($json_obj->[0]['password'])) {
+if (isset($json_obj['name']) && isset($json_obj['email']) && isset($json_obj[0]['password'])) {
 
     // receiving the post params
     $name = $json_obj[0]['name'];
@@ -53,8 +53,8 @@ if (isset($json_obj[0]['name']) && isset($json_obj[0]['email']) && isset($json_o
     $response["error"] = TRUE;
     $response["error_msg"] = "Required parameters (name, email or password) is missing!";
     $response["name"]=$json_obj[0]['name']};
-    $response["email"]=$json_obj->{'email'};
-    $response["password"]=$json_obj->{'password'};
+    $response["email"]=$json_obj[0]['email'};
+    $response["password"]=$json_obj[0]['password'};
     echo json_encode($response);
 }
 ?>
