@@ -34,7 +34,7 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
         if ($user) {
             // user stored successfully
             $response["error"] = FALSE;
-            $response["uid"] = $user["unique_id"];
+            $response["uid"] = $user["id"];
             $response["user"]["name"] = $user["name"];
             $response["user"]["email"] = $user["email"];
             $response["user"]["created_at"] = $user["created_at"];

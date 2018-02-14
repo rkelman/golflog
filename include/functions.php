@@ -4,7 +4,7 @@ include_once('../connection.php');
      * Storing new user
      * returns user details
      */
-    function storeUser($firstname, $lastname, $email, $password) {
+  /*  function storeUser($firstname, $lastname, $email, $password) {
         $hash = hashSSHA($password);
         $encrypted_password = $hash["encrypted"]; // encrypted password
         $salt = $hash["salt"]; // salt
@@ -40,7 +40,7 @@ include_once('../connection.php');
     /**
      * Get user by email and password
      */
-    getUserByEmailAndPassword($email, $password) {
+  /*  getUserByEmailAndPassword($email, $password) {
         $conn = connectDB();
 
         $stmt = "SELECT * FROM users WHERE email = '".$email."'";
