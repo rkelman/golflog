@@ -43,7 +43,7 @@ include_once('../connection.php');
     getUserByEmailAndPassword($email, $password) {
         $conn = connectDB();
 
-        $stmt = "SELECT * FROM users WHERE email = '".$email."'";
+        $stmt = "SELECT * FROM glUsers WHERE email = '".$email."'";
 
         $qyUser=$conn->query($stmt);
         if ($qyUser->num_rows > 0) {
