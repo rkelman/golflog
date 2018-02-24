@@ -1,5 +1,5 @@
 <?php
-include_once('../connection.php');
+include_once('connection.php');
     /**
      * Storing new user
      * returns user details
