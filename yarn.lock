@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@uirouter/core@5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.3.tgz#e2b5b1e45190e20c67ba4e15c013de5d4e0ccab3"
+
+angular-ui-router@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/angular-ui-router/-/angular-ui-router-1.0.3.tgz#bf2494caae95c37cf01af3761d89747cfed2db45"
+  dependencies:
+    "@uirouter/core" "5.0.3"
+
 angular@^1.6.9:
   version "1.6.9"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.9.tgz#bc812932e18909038412d594a5990f4bb66c0619"
@@ -17,7 +27,3 @@ jquery@^3.3.1:
 satellizer@^0.15.5:
   version "0.15.5"
   resolved "https://registry.yarnpkg.com/satellizer/-/satellizer-0.15.5.tgz#43c93d2d361c4b6b6cf9d06d23b8881302b557a4"
-
-ui-router@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/ui-router/-/ui-router-1.0.0-alpha.3.tgz#b29872720228b09af55259e9418f5e14bc07d962"

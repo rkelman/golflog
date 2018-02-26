@@ -39,6 +39,33 @@ include_once('connection.php');
     }
 
     /**
+     * Storing new/reset passord
+     * returns...
+     */
+    function storeResetPassword($password, $mailID) {
+        $hash = hashSSHA($password);
+        $encrypted_password = $hash["encrypted"]; // encrypted password
+        $salt = $hash["salt"]; // salt
+
+        $conn = connectDB();
+
+        $sql = "Update tlUsers SET password='".$hashPass."', updated_at = now() ".
+           "WHERE email ='".$mailID."'";
+
+        $sqlIns=$conn->query($sql);
+
+        // check for successful store
+        if ($sqlIns) {
+          $conn->close();
+          return true;
+        } else {
+          $conn->close();
+          return false;
+        }
+    }
+
+
+    /**
      * Get user by email and password
      */
     function getUserByEmailPassword($email, $password) {
