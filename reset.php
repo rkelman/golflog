@@ -16,7 +16,7 @@ if (isset($json_obj['email']) && !isset($json_obj['key'])) {
 
   $username = $json_obj["email"];
   //echo $username."<BR>\n";
-  $res_sql = "SELECT * from tlUsers where email = '".$username."'";
+  $res_sql = "SELECT * from glUsers where email = '".$username."'";
   //echo $res_sql;
 
   if (!$res_result = $conn->query($res_sql)) {
@@ -35,6 +35,7 @@ if (isset($json_obj['email']) && !isset($json_obj['key'])) {
     $response["message"] = "A link to reset your password has been sent to your email";
     echo json_encode($response);
   } else {
+    $response["error"] = TRUE;
     $response["success"] = "FALSE";
     $response["message"] = "Sorry, The email entered is not registered to a Golflog user.";
     echo json_encode($response);

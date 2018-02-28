@@ -32,7 +32,7 @@ if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
 }  elseif (isset($_POST["email"])) {
   $username = $_POST["email"];
   //echo $username."<BR>\n";
-  $res_sql = "SELECT * from tlUsers where email = '".$username."'";
+  $res_sql = "SELECT * from glUsers where email = '".$username."'";
   //echo $res_sql;
 
   if (!$res_result = $conn->query($res_sql)) {
