@@ -40,7 +40,7 @@ include_once('connection.php');
 
     /**
      * Storing new/reset passord
-     * returns...
+     * returns true if successful, false otherwise
      */
     function storeResetPassword($password, $mailID) {
         $hash = hashSSHA($password);
