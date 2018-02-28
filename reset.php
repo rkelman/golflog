@@ -1,36 +1,20 @@
 <?php
 include 'include/connection.php';
 include 'include/userkey.php';
+// json response array
+$response = array("error" => FALSE);
 
-$conn = connectDB();
+// Get JSON as a string
+$json_str = file_get_contents('php://input');
 
-//print_r($_GET);
+// Get as an object
+$json_obj = json_decode($json_str, TRUE);
 
-//if no post or get; first time to page
-if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
-  echo "<html>\n";
-  echo "<head>\n<link rel=\"stylesheet\" href=\"traininglog.css\">\n";
-  echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
-  echo "</head>\n";
-  echo "<body>\n";
-  if (isset($_GET["err"])) {
-    if ($_GET["err"]=="InvalidKey") {
-      echo "<neg_mesg>Sorry, The key that you used appears to be expired, please request a new one.</neg_mesg><BR>";
-    } elseif ($_GET["err"]=="InvalidName") {
-      echo "<neg_mesg>Sorry, The email you entered is not registered to a Traininglog user.</neg_mesg><BR>";
-      echo "<a href=\"register.php\">Create New Account</a><BR>";
-    }
-  }
-  echo "Please enter e-mail to reset password<BR><BR>";
-  echo "<form action=\"reset.php\" method=\"post\">\n";
-  echo "eMail: ";
-  echo "<input type=\"text\" name=\"email\"><BR>\n";
-  echo "<input type=\"submit\" name=\"Request Reset\"><BR>\n";
-  echo "</form>\n";
-  echo "</body>\n";
-  echo "</html>";
-}  elseif (isset($_POST["email"])) {
-  $username = $_POST["email"];
+if (isset($json_obj['email']) && !isset($json_obj['key'])) {
+
+  $conn = connectDB();
+
+  $username = $json_obj["email"];
   //echo $username."<BR>\n";
   $res_sql = "SELECT * from tlUsers where email = '".$username."'";
   //echo $res_sql;
@@ -46,53 +30,57 @@ if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
     //echo $key;
     mailUserKey($username, $key);
 
-    echo "<html>\n";
-    echo "<head>\n<link rel=\"stylesheet\" href=\"traininglog.css\">\n";
-    echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
-    echo "</head>\n";
-    echo "<body>\n";
-    echo "A link to reset your password has been sent to your email<BR><BR>";
-    echo "Please check your email to complete the reset process<BR>\n";
-    echo "</body>\n";
-    echo "</html>";
+    $response["success"] = "TRUE";
+    $response["step"]=1;
+    $response["message"] = "A link to reset your password has been sent to your email";
+    echo json_encode($response);
   } else {
-    header('Location: reset.php?err=InvalidName');
+    $response["success"] = "FALSE";
+    $response["message"] = "Sorry, The email entered is not registered to a Golflog user.";
+    echo json_encode($response);
   }
-} elseif (isset($_GET['mail']) && isset($_GET['key'])) {
-  $mailID = $_GET['mail'];
-  $keyID = $_GET['key'];
+} elseif (isset($json_obj['email']) && isset($json_obj['key']) && !isset($json_obj['password'])) {
+  $mailID = $_json_obj['mail'];
+  $keyID = $_json_obj['key'];
+
   if (validateUserKey($mailID, $keyID)) {
-    //Allow user to enter new password_conf
-    echo "<html>\n";
-    echo "<head>\n<link rel=\"stylesheet\" href=\"traininglog.css\">\n";
-    echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
-    echo "</head>\n";
-    echo "<body>\n";
-    if (isset($_GET['err'])) {
-      $err = $_GET['err'];
-      if ($err == "passMismatch") {
-        echo "<neg_mesg>Sorry, Passwords did not match.</neg_mesg><BR>";
-      } elseif ($err == "passNull") {
-        echo "<neg_mesg>Sorry, Passwords cannot be null.</neg_mesg><BR>";
-      }
-    }
-    echo "<form action=\"resetpass.php\" method=\"post\">\n";
-    echo "Password: ";
-    echo "<input type=\"password\" name=\"password\"><BR>\n";
-    echo "Confirm Password: ";
-    echo "<input type=\"password\" name=\"password_conf\"><BR>\n";
-    echo "<input type=\"hidden\" id=\"mailID\" name=\"mail\" value=\"".$mailID."\">\n";
-    echo "<input type=\"hidden\" id=\"keyID\" name=\"key\" value=\"".$keyID."\">\n";
-    echo "<input type=\"submit\" name=\"Reset Password\"><BR>\n";
-    echo "</form>\n";
-    echo "</body>\n";
-    echo "</html>";
+    //allow user to update password
+    $response["success"] = "TRUE";
+    $response["step"]=2;
+    $response["message"] = "Please update your password.";
+    echo json_encode($response);
   } else {
-    //otherwise let the user know their key is invalid
-    //echo "email: ".$mailID."<BR>\n";
-    //echo "emailed key: ".$keyID."<BR>\n";
-    //echo "function: ".hash('gost',$mailID.date('z'));
-    header('Location: reset.php?err=InvalidKey');
+    //Allow user to enter new password_conf
+    $response["success"] = "FALSE";
+    $response["step"]=2;
+    $response["message"] = "The key you are using is invalid or expired";
+    echo json_encode($response);
+  }
+} elseif (isset($json_obj['email']) && isset($json_obj['key']) && isset($json_obj['password'])) {
+  $mailID = $_json_obj['mail'];
+  $keyID = $_json_obj['key'];
+  $passwd = $_json_obj['password'];
+
+  if (validateUserKey($mailID, $keyID)) {
+    //allow password to be updated
+    if (!storeResetPassword($passwd, $mailID)) {
+      // Oh no! The update query failed.
+      $response["success"] = "FALSE";
+      $response["step"]=3;
+      $response["message"] = "Password not able to be updated Golflog experiencing issues.";
+      echo json_encode($response);
+    } else {
+      $response["success"] = "TRUE";
+      $response["step"]=3;
+      $response["message"] = "Password Updated";
+      echo json_encode($response);
+    }
+  } else {
+    //Allow user to enter new password_conf
+    $response["success"] = "FALSE";
+    $response["step"]=3;
+    $response["message"] = "The key you are using is invalid or expired";
+    echo json_encode($response);
   }
 }
 
