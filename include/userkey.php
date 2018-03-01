@@ -1,7 +1,7 @@
 <?php
 
 function getPassHash ($pass) {
-  return hash('gost', $pass); 
+  return hash('gost', $pass);
 }
 
 function createUserKey($name) {
@@ -18,13 +18,13 @@ function validateUserKey($name, $key) {
 }
 
 function mailUserKey($name, $key) {
-  $headers = 'From: Traininglog Assistant <info@daxhund.com>' . "\r\n" .
+  $headers = 'From: Golflog Assistant <info@daxhund.com>' . "\r\n" .
       'Reply-To: info@daxhund.com' . "\r\n" .
       'X-Mailer: PHP/' . phpversion();
-  $subject = "Training Log Password Reset";
+  $subject = "Golflog Password Reset";
 
   $message = "As you requested here is the link to reset your password
-  traininglog.daxhund.com/reset.php?mail=".$name."&key=".$key;
+  golflog.daxhund.com/reset.php?mail=".$name."&key=".$key;
   mail($name, $subject, $message, $headers);
 }
 
