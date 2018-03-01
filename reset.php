@@ -2,7 +2,8 @@
 include 'include/connection.php';
 include 'include/userkey.php';
 // json response array
-$response = array("error" => FALSE);
+//$response = array("error" => FALSE);
+$response = array();
 
 // Get JSON as a string
 $json_str = file_get_contents('php://input');
@@ -35,7 +36,6 @@ if (isset($json_obj['email']) && !isset($json_obj['key'])) {
     $response["message"] = "A link to reset your password has been sent to your email";
     echo json_encode($response);
   } else {
-    $response["error"] = TRUE;
     $response["success"] = "FALSE";
     $response["message"] = "Sorry, The email entered is not registered to a Golflog user.";
     echo json_encode($response);
