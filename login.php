@@ -23,7 +23,7 @@ if (isset($json_obj['email']) && isset($json_obj['password'])) {
 //        $response["error"] = FALSE;
         $response["uid"] = $user["id"];
 //        $response["user"]["firstname"] = $user["firstName"];
-        $response['firstname'] = $user["firstName"];
+        $response["firstname"] = $user["firstName"];
 //        $response["user"]["lastname"] = $user["lastName"];
         $response["lastname"] = $user["lastName"];
 //        $response["user"]["email"] = $user["email"];
