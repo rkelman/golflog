@@ -20,13 +20,17 @@ if (isset($json_obj['email']) && isset($json_obj['password'])) {
 
     if ($user["error"] != TRUE) {
         // use is found
-        $response["error"] = FALSE;
+//        $response["error"] = FALSE;
         $response["uid"] = $user["id"];
-        $response["user"]["firstname"] = $user["firstName"];
-        $response["user"]["lastname"] = $user["lastName"];
-        $response["user"]["email"] = $user["email"];
-        $response["user"]["created_at"] = $user["created_at"];
-        $response["user"]["updated_at"] = $user["updated_at"];
+//        $response["user"]["firstname"] = $user["firstName"];
+        $response["firstname"] = $user["firstName"];
+//        $response["user"]["lastname"] = $user["lastName"];
+        $response["lastname"] = $user["lastName"];
+//        $response["user"]["email"] = $user["email"];
+//        $response["user"]["created_at"] = $user["created_at"];
+        $response["created_at"] = $user["created_at"];
+//        $response["user"]["updated_at"] = $user["updated_at"];
+        $response["updated_at"] = $user["updated_at"];
         echo json_encode($response);
     } else {
         // user is not found with the credentials
