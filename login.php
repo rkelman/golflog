@@ -31,6 +31,7 @@ if (isset($json_obj['email']) && isset($json_obj['password'])) {
         $response["created_at"] = $user["created_at"];
 //        $response["user"]["updated_at"] = $user["updated_at"];
         $response["updated_at"] = $user["updated_at"];
+        $response["token"]="fake-jwt-token";
         echo json_encode($response);
     } else {
         // user is not found with the credentials
