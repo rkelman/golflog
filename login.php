@@ -26,6 +26,7 @@ if (isset($json_obj['email']) && isset($json_obj['password'])) {
         $response["firstname"] = $user["firstName"];
 //        $response["user"]["lastname"] = $user["lastName"];
         $response["lastname"] = $user["lastName"];
+        $response["email"] = $user["email"];    
 //        $response["user"]["email"] = $user["email"];
 //        $response["user"]["created_at"] = $user["created_at"];
         $response["created_at"] = $user["created_at"];
