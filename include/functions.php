@@ -38,13 +38,13 @@ include_once('connection.php');
         }
     }
     //function to insert a new practice activity
-    function insertActivity($uid, $activity, $elapsedTime, $notes) {
+    function insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location) {
       $conn = connectDB();
 
       $sql = "INSERT INTO glPracticeLog
-         (userID, practiceType, elapsedTime, loggedDate, practiceNotes)
+         (userID, practiceType, practiceSubType, elapsedTime, loggedDate, practiceNotes, location)
          VALUES
-         (".$uid.", '".$activity."', '".$elapsedTime."', NOW(), $notes)";
+         (".$uid.", '".$activity."','".$subActivity."', '".$elapsedTime."', NOW(), '".$notes."', '".$location."')";
 
       $insActivity = $conn->query($sql);
       if ($insActivity){

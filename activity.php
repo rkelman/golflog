@@ -14,11 +14,13 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     // receiving the post params
     $uid = $json_obj['uid'];
     $activity = $json_obj['activity'];
+    $subActivity = $json_obj['subActivity'];
     $elapsedTime = $json_obj['elapsedTime'];
     $notes = $json_obj['notes'];
+    $location = $json_obj['location'];
 
     // get the user by email and password
-    $response = insertActivity($uid, $activity, $elapsedTime);
+    $response = insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location);
 
     echo json_encode($response);
 
