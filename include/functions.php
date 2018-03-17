@@ -37,6 +37,34 @@ include_once('connection.php');
           return false;
         }
     }
+    //function to insert a new practice activity
+    function insertActivity($uid, $activity, $elapsedTime) {
+      $conn = connectDB();
+
+      $sql = "INSERT INTO glPracticeLog
+         (userID, practiceType, elapsedTime, loggedDate)
+         VALUES
+         (".$uid.", '".$activity."', '".$elapsedTime."', NOW())";
+
+      $insActivity = $conn->query($sql);
+      if ($insActivity){
+        //successful insert
+        $result["success"]=true;
+        $conn->close();
+        return $result;
+      } else {
+        //error
+        $result["success"]=false;
+        $result["error_msg"]="Golflog experiencing issues: Insert failed on DB";
+        $conn->close();
+        return $result;
+      }
+    }
+
+    //function to check token submitted on API calls
+    function checkToken($uid, $token){
+      return true;
+    }
 
     /**
      * Storing new/reset passord
