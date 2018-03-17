@@ -15,6 +15,7 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     $uid = $json_obj['uid'];
     $activity = $json_obj['activity'];
     $elapsedTime = $json_obj['elapsedTime'];
+    $notes = $json_obj['notes'];
 
     // get the user by email and password
     $response = insertActivity($uid, $activity, $elapsedTime);
