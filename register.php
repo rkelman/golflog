@@ -33,13 +33,14 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
        $user = storeUser($firstname, $lastname, $email, $password);
        if ($user) {
             // user stored successfully
-            $response["error"] = FALSE;
+            //$response["success"] = true;
             $response["uid"] = $user["id"];
-            $response["user"]["firstname"] = $user["firstName"];
-            $response["user"]["lastname"] = $user["lastName"];
-            $response["user"]["email"] = $user["email"];
-            $response["user"]["created_at"] = $user["created_at"];
-            $response["user"]["updated_at"] = $user["updated_at"];
+            $response["firstname"] = $user["firstName"];
+            $response["lastname"] = $user["lastName"];
+            $response["email"] = $user["email"];
+            $response["created_at"] = $user["created_at"];
+            $response["updated_at"] = $user["updated_at"];
+            $response["token"]="fake-jwt-token";
             echo json_encode($response);
         } else {
             // user failed to store
