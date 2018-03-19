@@ -28,6 +28,7 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
         // user already existed
         $response["error"] = TRUE;
         $response["error_msg"] = "User already exists with email: ".$email;
+        http_response_code(400);
         echo json_encode($response);
     } else {
        $user = storeUser($firstname, $lastname, $email, $password);
@@ -41,6 +42,7 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
             $response["created_at"] = $user["created_at"];
             $response["updated_at"] = $user["updated_at"];
             $response["token"]="fake-jwt-token";
+            http_response_code(200);
             echo json_encode($response);
         } else {
             // user failed to store
@@ -49,6 +51,7 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
             $response["firstname"]=$firstname;
             $response["lastname"]=$lastname;
             $response["email"]=$email;
+            http_response_code(400);
             echo json_encode($response);
         }
     }
@@ -59,6 +62,7 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
     $response["lastname"]=$json_obj['lastname'];
     $response["email"]=$json_obj['email'];
     $response["password"]=$json_obj['password'];
+    http_response_code(400);
     echo json_encode($response);
 }
 ?>
