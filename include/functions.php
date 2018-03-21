@@ -42,7 +42,7 @@ include_once('connection.php');
       $conn = connectDB();
 
       $sql = "INSERT INTO glPracticeLog
-         (userID, practiceType, practiceSubType, elapsedTime, loggedDate, practiceNotes, location)
+         (userID, practiceType, practiceSubType, elapsedTime, practiceDateTime, practiceNotes, location)
          VALUES
          (".$uid.", '".$activity."','".$subActivity."', '".$elapsedTime."', NOW(), '".$notes."', '".$location."')";
 

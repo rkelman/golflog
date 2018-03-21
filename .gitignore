@@ -2,3 +2,4 @@ testftp.sh
 include/connection.php
 .bowerrc
 package.json
+gitcheckin.sh
