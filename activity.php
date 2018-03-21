@@ -24,13 +24,14 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     // get the user by email and password
     $response = insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location);
 
-    echo json_encode($response);
+    //echo json_encode($response);
 
 } else {
     // required post params is missing
     $response["error"] = TRUE;
     $response["error_msg"]["message"] = "Required parameter token missing or invalid.";
     $response["error_msg"]["token"]=$json_obj['token'];
+    $response["json_obj"]=$json_obj;
     echo json_encode($response);
 }
 ?>
