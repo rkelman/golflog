@@ -8,7 +8,7 @@ $response = array("error" => FALSE);
 $json_str = file_get_contents('php://input');
 
 // Get as an object
-$json_obj = json_decode(utf8_encode($json_str), TRUE);
+$json_obj = json_decode(str_replace ('\"','"', $json_string), TRUE);
 
 echo $json_obj;
 
@@ -31,6 +31,7 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     $response["error"] = TRUE;
     $response["error_msg"]["message"] = "Required parameter token missing or invalid.";
     $response["error_msg"]["token"]=$json_obj['token'];
+    $response["json_obj"]=$json_obj;
     $response["json_str"]=$json_str;
     echo json_encode($response);
 }
