@@ -9,6 +9,7 @@ $json_str = mb_convert_encoding(file_get_contents('php://input'), 'UTF-8', 'UTF-
 
 // Get as an object
 $json_obj = json_decode($json_str, TRUE);
+$json_err = json_last_error();
 
 echo $json_obj;
 
@@ -33,6 +34,7 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     $response["error_msg"]["token"]=$json_obj['token'];
     $response["json_obj"]=$json_obj;
     $response["json_str"]=$json_str;
+    $response["json_err"]=$json_err;
     echo json_encode($response);
 }
 ?>
