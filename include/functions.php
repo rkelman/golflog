@@ -50,6 +50,7 @@ include_once('connection.php');
       if ($insActivity){
         //successful insert
         $result["success"]=true;
+        $result["msg"]="New ".$activity." Activity Saved.";
         $conn->close();
         return $result;
       } else {
