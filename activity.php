@@ -8,7 +8,7 @@ $response = array("error" => FALSE);
 $json_str = file_get_contents('php://input');
 
 // Get as an object
-$json_obj = json_decode(stripslashes($json_string), TRUE);
+$json_obj = json_decode($json_str), TRUE);
 
 echo $json_obj;
 
