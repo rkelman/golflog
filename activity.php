@@ -26,7 +26,7 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     $response["json_obj"]=$json_obj;
 
     //insertActivity into DB
-    $response = insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location);
+    $response = array_merge($response, insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location));
 
     $temp = json_encode($response);
     $temp2 = json_decode($temp, TRUE);
