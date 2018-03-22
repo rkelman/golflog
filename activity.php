@@ -2,16 +2,14 @@
 require_once 'include/functions.php';
 
 // json response array
-$response["error"] = false;
+$response["error"] = FALSE;
 
 // Get JSON as a string
 $json_str = file_get_contents('php://input');
 
 // Get as an object
 $json_obj = json_decode($json_str, TRUE);
-$json_err = json_last_error();
-
-echo $json_obj;
+//$json_err = json_last_error();
 
 if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid'])) {
     // receiving the post params
