@@ -32,7 +32,7 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     $temp2 = json_decode($temp, TRUE);
     $json_err = json_last_error();
     $response["json_err"]=$json_err;
-    echo json_encode($response, JSON_PRETTY_PRINT);
+    echo json_encode($response, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
 
 } else {
     // required post params is missing
