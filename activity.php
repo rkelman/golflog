@@ -22,12 +22,13 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     $notes = $json_obj['notes'];
     $location = $json_obj['location'];
 
-    // get the user by email and password
-    $response->json_obj=$json_obj;
+    // troubleshooting
+    $response["json_obj"]=$json_obj;
 
+    //insertActivity into DB
     //$response = insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location);
 
-    $temp = json_encode($response, JSON_PRETTY_PRINT);
+    $temp = json_encode($response);
     $temp2 = json_decode($temp, TRUE);
     $json_err = json_last_error();
     $response["json_err"]=$json_err;
