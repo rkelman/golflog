@@ -21,16 +21,12 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     $location = $json_obj['location'];
 
     // troubleshooting
-    $response["json_obj"]=$json_obj;
+    //$response["json_obj"]=$json_obj;
 
     //insertActivity into DB
-    //$response = array_merge($response, insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location));
+    $response = array_merge($response, insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location));
 
-    $temp = json_encode($response);
-    $temp2 = json_decode($temp, TRUE);
-    $json_err = json_last_error();
-    $response["json_err"]=$json_err;
-    echo json_encode($response, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+    echo json_encode($response, JSON_PRETTY_PRINT);
 
 } else {
     // required post params is missing
