@@ -23,9 +23,11 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     $location = $json_obj['location'];
 
     // get the user by email and password
-    $response = insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location);
+      $response["json_obj"]=$json_obj;
+      
+    //$response = insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location);
 
-    //echo json_encode($response);
+    echo json_encode($response);
 
 } else {
     // required post params is missing
