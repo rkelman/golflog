@@ -2,7 +2,7 @@
 require_once 'include/functions.php';
 
 // json response array
-//$response["error"] = FALSE;
+$json_resp->error = FALSE;
 
 // Get JSON as a string
 $json_str = file_get_contents('php://input');
@@ -23,11 +23,11 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     $location = $json_obj['location'];
 
     // get the user by email and password
-    $response->json_obj=$json_obj;
+    $json_resp->json_obj=$json_obj;
 
     //$response = insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location);
 
-    echo json_encode($response);
+    echo json_encode($json_resp);
 
 } else {
     // required post params is missing
