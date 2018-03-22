@@ -27,7 +27,7 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
 
     //$response = insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location);
 
-    echo json_encode($json_resp);
+    echo json_encode($json_resp, JSON_PRETTY_PRINT);
 
 } else {
     // required post params is missing
