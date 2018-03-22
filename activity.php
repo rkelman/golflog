@@ -2,7 +2,7 @@
 require_once 'include/functions.php';
 
 // json response array
-$response["error"] = FALSE;
+$response = array("error" => FALSE);
 
 // Get JSON as a string
 $json_str = file_get_contents('php://input');
