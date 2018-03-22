@@ -31,7 +31,7 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     $response["error"] = TRUE;
     $response["error_msg"]["message"] = "Required parameter token missing or invalid.";
     $response["error_msg"]["token"]=$json_obj['token'];
-    $response["json_obj"]=$json_obj;
+    $response["json_str"]=$json_str;
     echo json_encode($response);
 }
 ?>
