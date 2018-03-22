@@ -5,7 +5,7 @@ require_once 'include/functions.php';
 $response = array("error" => FALSE);
 
 // Get JSON as a string
-$json_str = mb_convert_encoding(file_get_contents('php://input'), 'UTF-8', 'UTF-8');
+$json_str = file_get_contents('php://input');
 
 // Get as an object
 $json_obj = json_decode($json_str, TRUE);
