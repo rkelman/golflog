@@ -56,6 +56,7 @@ include_once('connection.php');
         //error
         $result["success"]=false;
         $result["error_msg"]="Golflog experiencing issues: Insert failed on DB";
+        $result["sql"]=$sql;
         $conn->close();
         return $result;
       }
