@@ -1,19 +1,26 @@
 <?php
 require_once 'include/functions.php';
+$method = $_SERVER['REQUEST_METHOD'];
 
 // json response array
 $response = array("error" => FALSE);
 
-// Get JSON as a string
-$json_str = file_get_contents('php://input');
+if ($method != 'POST') {
+  $response["error"] = TRUE;
+  $response["error_msg"] = "Unsupported HTTP Method ".$method." for API Register";
+  http_response_code(400);
+  echo json_encode($response);
+} elseif ($method == 'POST') {
+  // Get JSON as a string
+  $json_str = file_get_contents('php://input');
 
-// Get as an object
-$json_obj = json_decode($json_str, TRUE);
+  // Get as an object
+  $json_obj = json_decode($json_str, TRUE);
 
-//print_r($json_obj);
-//print $json_obj->{'name'};
+  //print_r($json_obj);
+  //print $json_obj->{'name'};
 
-if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json_obj['email']) && isset($json_obj['password'])) {
+  if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json_obj['email']) && isset($json_obj['password'])) {
 
     // receiving the post params
     $firstname = $json_obj['firstname'];
@@ -54,8 +61,8 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
             http_response_code(400);
             echo json_encode($response);
         }
-    }
-} else {
+     }
+  } else {
     $response["error"] = TRUE;
     $response["error_msg"] = "Required parameters (name, email or password) is missing";
     $response["firstname"]=$json_obj['firstname'];
@@ -64,5 +71,6 @@ if (isset($json_obj['firstname']) && isset($json_obj['lastname']) && isset($json
     $response["password"]=$json_obj['password'];
     http_response_code(400);
     echo json_encode($response);
+  }
 }
 ?>
