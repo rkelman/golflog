@@ -1,17 +1,23 @@
 <?php
 require_once 'include/functions.php';
 
+$method = $_SERVER['REQUEST_METHOD'];
+
 // json response array
 $response["error"] = FALSE;
 
-// Get JSON as a string
-$json_str = file_get_contents('php://input');
+if ($method != 'POST') {
+  $response["error"] = TRUE;
+  $response["error_msg"] = "Unsupported HTTP Method ".$method." for API Activity";
+} elseif ($method == 'POST') {
+  // Get JSON as a string
+  $json_str = file_get_contents('php://input');
 
-// Get as an object
-$json_obj = json_decode($json_str, TRUE);
-//$json_err = json_last_error();
+  // Get as an object
+  $json_obj = json_decode($json_str, TRUE);
+  //$json_err = json_last_error();
 
-if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid'])) {
+  if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid'])) {
     // receiving the post params
     $uid = $json_obj['uid'];
     $activity = $json_obj['activity'];
@@ -28,7 +34,7 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
 
     echo json_encode($response, JSON_PRETTY_PRINT);
 
-} else {
+  } else {
     // required post params is missing
     $response["error"] = TRUE;
     $response["error_msg"]["message"] = "Required parameter token missing or invalid.";
@@ -37,5 +43,6 @@ if (isset($json_obj['token']) && checkToken($json_obj['token'], $json_obj['uid']
     $response["json_str"]=$json_str;
     $response["json_err"]=$json_err;
     echo json_encode($response);
+  }
 }
 ?>
