@@ -9,6 +9,8 @@ $response["error"] = FALSE;
 if ($method != 'POST') {
   $response["error"] = TRUE;
   $response["error_msg"] = "Unsupported HTTP Method ".$method." for API Activity";
+  http_response_code(400);
+  echo json_encode($response);
 } elseif ($method == 'POST') {
   // Get JSON as a string
   $json_str = file_get_contents('php://input');
