@@ -8,7 +8,7 @@ $response["error"] = FALSE;
 
 if ($method != 'POST') {
   $response["error"] = TRUE;
-  $response["error_msg"] = "Unsupported HTTP Method ".$method." for API Activity";
+  $response["error_msg"] = "Unsupported HTTP Method ".$method." for API Login";
   http_response_code(400);
   echo json_encode($response);
 } elseif ($method == 'POST') {
