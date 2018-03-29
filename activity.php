@@ -54,9 +54,11 @@ if (($method != 'POST') && ($method != 'GET')) {
     http_response_code(400);
     echo json_encode($response);
   } else {
+    print_r($_GET);/*
     $uid = $_GET['uid'];
     $type = $_GET['type'];
     echo "UID: ".$uid;
+    echo "type: ".$type;
     if ($type = 'summary') {
       $response = getActivitySummary($uid);
       if ($response["success"] == FALSE) {
@@ -64,14 +66,14 @@ if (($method != 'POST') && ($method != 'GET')) {
       }
       echo json_encode($response);
     } elseif (($type = 'list') || (isempty($_GET['type'])) || (!isset($_GET['type']))) {
-      if (!isempty($_GET['number'])) {
+      if (isset($_GET['number'])) {
         $number = $_GET['number'];
       } else {
         $number = 10;
       }
       $response = getActivityList($uid, $number);
       echo json_encode($response);
-    }
+    }*/
   }
 }
 ?>
