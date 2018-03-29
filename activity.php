@@ -54,10 +54,14 @@ if (($method != 'POST') && ($method != 'GET')) {
     http_response_code(400);
     echo json_encode($response);
   } else {
-    $uid=$_GET['uid'];
+    $uid=$_GET['uid'];   
+    $response["error"] = TRUE;
+    $response["error_msg"] = "Invalid Activity Get call - requires uid";
+    http_response_code(400);
+    echo json_encode($response);        
     //$response["error"] = FALSE;
     //$response["uid"]=$uid;
-    echo "\nhello";//json_encode($response);
+    //json_encode($response);
     /*
     $uid = $_GET['uid'];
     $type = $_GET['type'];
