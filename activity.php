@@ -52,7 +52,7 @@ if (($method != 'POST') && ($method != 'GET')) {
     $response["error_msg"] = "Invalid Activity Get call - requires uid, type";
     http_response_code(400);
     echo json_encode($response);
-  } else {
+  } /*else {
     $uid = $_GET['uid'];
     $type = $_GET['type'];
     if ($type = 'summary') {
@@ -70,6 +70,6 @@ if (($method != 'POST') && ($method != 'GET')) {
       $response = getActivityList($uid, $number);
       echo json_encode($response);
     }
-  }
+  }*/
 }
 ?>
