@@ -48,7 +48,7 @@ if (($method != 'POST') && ($method != 'GET')) {
   }
 } elseif ($method == 'GET') {
   echo "hello ".$method;
-  if (isempty($_GET['uid'])) {
+  if (!isset($_GET['uid']) || isempty($_GET['uid'])) {
     $response["error"] = TRUE;
     $response["error_msg"] = "Invalid Activity Get call - requires uid, type";
     http_response_code(400);
