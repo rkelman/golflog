@@ -57,6 +57,9 @@ if (($method != 'POST') && ($method != 'GET')) {
     $type = $_GET['type'];
     if ($type = 'summary') {
       $response = getActivitySummary($uid);
+      if ($response["success"] == FALSE) {
+        http_response_code(400);
+      }
       echo json_encode($response);
     } elseif (($type = 'list') || (isempty($_GET['type'])) {
       if (!isempty($_GET['number'])) {
