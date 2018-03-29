@@ -6,7 +6,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 // json response array
 $response["error"] = FALSE;
 
-if ($method != 'POST') {
+if (($method != 'POST') && ($method != 'GET')) {
   $response["error"] = TRUE;
   $response["error_msg"] = "Unsupported HTTP Method ".$method." for API Activity";
   http_response_code(400);
@@ -45,6 +45,28 @@ if ($method != 'POST') {
     $response["json_str"]=$json_str;
     $response["json_err"]=$json_err;
     echo json_encode($response);
+  }
+} elseif ($method == 'GET') {
+  if (isempty($_GET['uid'] ) {
+    $response["error"] = TRUE;
+    $response["error_msg"] = "Invalid Activity Get call - requires uid, type";
+    http_response_code(400);
+    echo json_encode($response);
+  } else {
+    $uid = $_GET['uid'];
+    $type = $_GET['type'];
+    if ($type = 'summary') {
+      $response = getActivitySummary($uid);
+      echo json_encode($response);
+    } elseif (($type = 'list') || (isempty($_GET['type'])) {
+      if (!isempty($_GET['number'])) {
+        $number = $_GET['number'];
+      } else {
+        $number = 10;
+      }
+      $response = getActivityList($uid, $number);
+      echo json_encode($response);
+    }
   }
 }
 ?>
