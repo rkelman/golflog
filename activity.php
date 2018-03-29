@@ -50,10 +50,10 @@ if (($method != 'POST') && ($method != 'GET')) {
   echo "hello ".$method;
   if (!isset($_GET['uid']) || isempty($_GET['uid'])) {
     $response["error"] = TRUE;
-    $response["error_msg"] = "Invalid Activity Get call - requires uid, type";
+    $response["error_msg"] = "Invalid Activity Get call - requires uid";
     http_response_code(400);
     echo json_encode($response);
-  } /*else {
+  } else {
     $uid = $_GET['uid'];
     $type = $_GET['type'];
     if ($type = 'summary') {
@@ -62,7 +62,7 @@ if (($method != 'POST') && ($method != 'GET')) {
         http_response_code(400);
       }
       echo json_encode($response);
-    } elseif (($type = 'list') || (isempty($_GET['type']))) {
+    } elseif (($type = 'list') || (isempty($_GET['type']) || !isset($_GET['type']))) {
       if (!isempty($_GET['number'])) {
         $number = $_GET['number'];
       } else {
@@ -71,6 +71,6 @@ if (($method != 'POST') && ($method != 'GET')) {
       $response = getActivityList($uid, $number);
       echo json_encode($response);
     }
-  }*/
+  }
 }
 ?>
