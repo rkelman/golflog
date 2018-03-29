@@ -54,8 +54,9 @@ if (($method != 'POST') && ($method != 'GET')) {
     http_response_code(400);
     echo json_encode($response);
   } else {
+    $uid=$_GET['uid'];
     $response["error"] = FALSE;
-    $response["message"]=$_GET;
+    $response["uid"]=$uid;
     echo json_encode($response);
     /*
     $uid = $_GET['uid'];
