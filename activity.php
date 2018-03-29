@@ -56,6 +56,7 @@ if (($method != 'POST') && ($method != 'GET')) {
   } else {
     $uid = $_GET['uid'];
     $type = $_GET['type'];
+    echo "UID: ".$uid; 
     if ($type = 'summary') {
       $response = getActivitySummary($uid);
       if ($response["success"] == FALSE) {
