@@ -55,32 +55,19 @@ if (($method != 'POST') && ($method != 'GET')) {
     http_response_code(400);
     echo json_encode($response);
   } else {
-    //echo "I got here";
-    $uid=$_GET['uid'];   
-    print_r($_GET);
-    //echo "<BR>".$uid;
-    $response["error"] = FALSE;
-    $response["uid"]=$uid;
-    echo json_encode($response);
-    /*
-    $uid = $_GET['uid'];
-    $type = $_GET['type'];
-    echo "UID: ".$uid;
-    echo "type: ".$type;
-    if ($type = 'summary') {
+    $uid=$_GET['uid'];
+    if ($_GET['type'] = 'summary') {
+      echo "got here";
       $response = getActivitySummary($uid);
       if ($response["success"] == FALSE) {
         http_response_code(400);
       }
       echo json_encode($response);
-    } else*/
+    } else
     if (($type = 'list') || (isempty($_GET['type'])) || (!isset($_GET['type']))) {
-      echo "got here";
       if (isset($_GET['number'])) {
-        echo "got here2";
         $number = $_GET['number'];
       } else {
-        echo "got here 3";
         $number = 10;
       }
       $response = getActivityList($uid, $number);
