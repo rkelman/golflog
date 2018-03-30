@@ -73,15 +73,19 @@ if (($method != 'POST') && ($method != 'GET')) {
         http_response_code(400);
       }
       echo json_encode($response);
-    } elseif (($type = 'list') || (isempty($_GET['type'])) || (!isset($_GET['type']))) {
+    } else*/
+    if (($type = 'list') || (isempty($_GET['type'])) || (!isset($_GET['type']))) {
+      echo "got here";
       if (isset($_GET['number'])) {
+        echo "got here2";
         $number = $_GET['number'];
       } else {
+        echo "got here 3";
         $number = 10;
       }
       $response = getActivityList($uid, $number);
       echo json_encode($response);
-    }*/
+    }
   }
 }
 ?>
