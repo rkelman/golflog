@@ -66,7 +66,7 @@ include_once('connection.php');
     function getActivitySummary($uid) {
       $conn = connectDB();
 
-      $sql = "SELECT type, count(type) count_type, SEC_TO_TIME(SUM(TIME_TO_SEC(elapsedTime))) sum_time
+      $sql = "SELECT practiceType, count(practiceType) count_type, SEC_TO_TIME(SUM(TIME_TO_SEC(elapsedTime))) sum_time
                 FROM glPracticeLog
                 WHERE userID = $uid
                 GROUP BY type";
@@ -100,21 +100,21 @@ include_once('connection.php');
     function getActivityList($uid,$number){
       $conn = connectDB();
 
-      $sql = "SELECT type, elapsedTime, practiceDateTime
+      $sql = "SELECT practiceType, elapsedTime, practiceDateTime
                 FROM glPracticeLog
                 WHERE userID = $uid
                 ORDER BY practiceDateTime DESC
                 LIMIT $number";
 
-      $getActSumm = $conn->query($sql);
+      $getActList = $conn->query($sql);
 
-      if ($getActSumm) {
+      if ($getActList) {
         $result["success"]=TRUE;
-        while ($row = $getActSumm->fetch_assoc()) {
+        while ($row = $getActList->fetch_assoc()) {
           $result[] = array(
-            'type' => $row['type'],
-            'elapsedTime' => $row['type'],
-            'count' => $row['count_type']
+            'type' => $row['practiceType'],
+            'elapsedTime' => $row['elapsedTime'],
+            'practiceDateTime' => $row['practiceDateTime']
           );
         }
         $conn->close();
