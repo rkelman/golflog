@@ -77,8 +77,8 @@ include_once('connection.php');
         $result["success"]=TRUE;
         while ($row = $getActSumm->fetch_assoc()) {
           $result[] = array(
-            'type' => $row['type'],
-            'elapsedTime' => $row['type'],
+            'type' => $row['practiceType'],
+            'elapsedTime' => $row['sum_time'],
             'count' => $row['count_type']
           );
           //$result[activities][type]=$row['type'];
