@@ -57,7 +57,6 @@ if (($method != 'POST') && ($method != 'GET')) {
   } else {
     $uid=$_GET['uid'];
     if ($_GET['type'] = 'summary') {
-      echo "got here";
       $response = getActivitySummary($uid);
       if ($response["success"] == FALSE) {
         http_response_code(400);

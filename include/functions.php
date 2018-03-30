@@ -69,7 +69,7 @@ include_once('connection.php');
       $sql = "SELECT practiceType, count(practiceType) count_type, SEC_TO_TIME(SUM(TIME_TO_SEC(elapsedTime))) sum_time
                 FROM glPracticeLog
                 WHERE userID = $uid
-                GROUP BY type";
+                GROUP BY practiceType";
 
       $getActSumm = $conn->query($sql);
 
