@@ -184,7 +184,9 @@ include_once('connection.php');
             
             // count user as logged in
             $updateLogin = "UPDATE glUsers set lastLogin=NOW() where id=".$user['id'];
+            echo $updateLogin;
             $update = $conn->query($updateLogin);
+            echo ":\n".$update;
 
             $conn->close();
             //$user["error"]= FALSE;
