@@ -57,7 +57,7 @@ if (($method != 'POST') && ($method != 'GET')) {
   } else {
     echo "I got here";
    // $uid=$_GET['uid'];   
-    r_print($_GET);
+    print_r($_GET);
     //echo "<BR>".$uid;
     //$response["error"] = FALSE;
     //$response["uid"]=$uid;
