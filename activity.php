@@ -56,10 +56,11 @@ if (($method != 'POST') && ($method != 'GET')) {
     echo json_encode($response);
   } else {
     $uid=$_GET['uid'];
-    echo "got here";
+    
     if ($_GET['type'] == 'summary') {
       $response = getActivitySummary($uid);
-      //print_r($response);
+      
+      //if getActivitySummary failed
       if ($response["success"] == FALSE) {
         http_response_code(400);
       }

@@ -82,9 +82,6 @@ include_once('connection.php');
             'elapsedTime' => $row['sum_time'],
             'count' => $row['count_type']
           );
-          //$result[activities][type]=$row['type'];
-          //$result[activities][elapsedTime]=$row['elapsedTime'];
-          //$result[activities][count]=$row['count_type'];
         }
         $conn->close();
         return $result;
