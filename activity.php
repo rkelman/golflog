@@ -59,11 +59,12 @@ if (($method != 'POST') && ($method != 'GET')) {
     echo "got here";
     if ($_GET['type'] == 'summary') {
       echo " got here 3";
-      /*$response = getActivitySummary($uid);
+      $response = getActivitySummary($uid);
+      print_r($response);
       if ($response["success"] == FALSE) {
         http_response_code(400);
       }
-      echo json_encode($response, JSON_PRETTY_PRINT);*/
+      echo json_encode($response, JSON_PRETTY_PRINT);
     } elseif (/*($_GET['type'] == 'list') ||*/ (isempty($_GET['type'])) || (!isset($_GET['type']))) {
       echo " got here 2";
       if (isset($_GET['number'])) {
