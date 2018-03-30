@@ -84,7 +84,7 @@ if (($method != 'POST') && ($method != 'GET')) {
         $number = 10;
       }
       $response = getActivityList($uid, $number);
-      echo json_encode($response);
+      echo json_encode($response, JSON_PRETTY_PRINT);
     }
   }
 }
