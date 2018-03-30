@@ -64,7 +64,7 @@ if (($method != 'POST') && ($method != 'GET')) {
         http_response_code(400);
       }
       echo json_encode($response, JSON_PRETTY_PRINT);*/
-    } elseif (/*($_GET['type'] == 'list') || (isempty($_GET['type'])) ||*/ (!isset($_GET['type']))) {
+    } elseif (/*($_GET['type'] == 'list') ||*/ (isempty($_GET['type'])) || (!isset($_GET['type']))) {
       echo " got here 2";
       if (isset($_GET['number'])) {
         $number = $_GET['number'];

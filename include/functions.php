@@ -37,6 +37,7 @@ include_once('connection.php');
           return false;
         }
     }
+
     //function to insert a new practice activity
     function insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location) {
       $conn = connectDB();
@@ -180,6 +181,11 @@ include_once('connection.php');
           // check for password equality
           if ($encrypted_password == $hash) {
             // user authentication details are correct
+            
+            // count user as logged in
+            $updateLogin = "UPDATE glUsers set lastLogin=NOW() where id=".$user['id'];
+            $update = $conn->query($updateLogin);
+
             $conn->close();
             //$user["error"]= FALSE;
             return $user;
@@ -189,12 +195,12 @@ include_once('connection.php');
             $user["error_msg"]='Password was incorrect for that account.';
             return $user;
           }
-        } else {
-            $conn->close();
-            $user["error"]=TRUE;
-            $user["error_msg"]='No user with that email found.';
-            return $user;
-        }
+      } else {
+        $conn->close();
+        $user["error"]=TRUE;
+        $user["error_msg"]='No user with that email found.';
+        return $user;
+      }
     }
 
     /**
