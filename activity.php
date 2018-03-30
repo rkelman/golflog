@@ -56,13 +56,13 @@ if (($method != 'POST') && ($method != 'GET')) {
     echo json_encode($response);
   } else {
     $uid=$_GET['uid'];
-    if ($_GET['type'] = 'summary') {
+    if ($_GET['type'] == 'summary') {
       $response = getActivitySummary($uid);
       if ($response["success"] == FALSE) {
         http_response_code(400);
       }
-      echo json_encode($response);
-    } elseif (($type = 'list') || (isempty($_GET['type'])) || (!isset($_GET['type']))) {
+      echo json_encode($response, JSON_FORCE_OBJECT);
+    } elseif (($type == 'list') || (isempty($_GET['type'])) || (!isset($_GET['type']))) {
       if (isset($_GET['number'])) {
         $number = $_GET['number'];
       } else {
