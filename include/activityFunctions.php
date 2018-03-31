@@ -95,10 +95,4 @@ include_once('log.php');
           return $result;
       }
     }
-
-    //function to check token submitted on API calls
-    function checkToken($uid, $token){
-      return true;
-    }
-
 ?>

@@ -1,5 +1,6 @@
 <?php
-require_once 'include/functions.php';
+require_once 'include/activityFunctions.php';
+require_once 'include/tokenFunctions.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
