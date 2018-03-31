@@ -1,10 +1,10 @@
 <?php
 include_once('connection.php');
 
-function log_cron($appName, $msg) {
+function logStep($appName, $msg) {
   $log_conn = connectDB();
 
-  $logSql = "INSERT into glLogs
+  $logSql = "INSERT into glAppLogs
      (logDateTime, app, message)
      VALUES
      (now(), '".$appName."', '".$msg."')";

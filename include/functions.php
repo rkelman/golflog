@@ -1,5 +1,6 @@
 <?php
 include_once('connection.php');
+include_once('log.php');
     /**
      * Storing new user
      * returns user details
@@ -27,13 +28,16 @@ include_once('connection.php');
             if ($qyUser->num_rows > 0) {
               $user = $qyUser->fetch_assoc();
               $conn->close();
+              logStep('Registration', 'Created User '.$email);
               return $user;
             }  else {
               $conn->close();
+              logStep('Registration', 'Failed to create user '.$email);
               return false;
             }
         } else {
           $conn->close();
+          logStep('Registration', 'Failed to create user '.$email);
           return false;
         }
     }
@@ -50,12 +54,16 @@ include_once('connection.php');
       $insActivity = $conn->query($sql);
       if ($insActivity){
         //successful insert
+        logStep('Activity', 'Logged new '.$activity.' for user ID: '.$uid);
+
         $result["success"]=true;
         $result["msg"]="New ".$activity." Activity Saved.";
         $conn->close();
         return $result;
       } else {
         //error
+        logStep('Activity', 'Insert failed for new '.$activity.' for user ID: '.$uid);
+
         $result["success"]=false;
         $result["error_msg"]="Golflog experiencing issues: Insert failed on DB";
         $result["sql"]=$sql;
@@ -87,6 +95,7 @@ include_once('connection.php');
         return $result;
       } else {
         //error
+        logStep('Activity', 'Failed to show Activity Summary for user ID: '.$uid);
         $result["success"]=FALSE;
         $result["error_msg"]="Golflog experiencing issues: Insert failed on DB";
         $result["sql"]=$sql;
