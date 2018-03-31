@@ -1,5 +1,5 @@
 <?php
-require_once 'include/functions.php';
+require_once 'include/userFunctions.php';
 $method = $_SERVER['REQUEST_METHOD'];
 
 // json response array
