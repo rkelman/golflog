@@ -27,19 +27,26 @@ if ($method != 'POST') {
     $lastname = $json_obj['lastname'];
     $email = $json_obj['email'];
     $password = $json_obj['password'];
+    $confpassword = $json_obj['confpassword'];
 
     //echo $name." ".$email." ".$password;
 
     // check if user is already existed with the same email
     if (isUserRegistered($email)) {
-        // user already existed
-        $response["error"] = TRUE;
-        $response["error_msg"] = "User already exists with email: ".$email;
-        http_response_code(400);
-        echo json_encode($response);
+      // user/email already exists
+      $response["error"] = TRUE;
+      $response["error_msg"] = "User already exists with email: ".$email;
+      http_response_code(400);
+      echo json_encode($response);
+    } elseif ($confpassword != $password) {
+      // passwords do no match
+      $response["error"] = TRUE;
+      $response["error_msg"] = "Passwords do not match";
+      http_response_code(400);
+      echo json_encode($response);
     } else {
-       $user = storeUser($firstname, $lastname, $email, $password);
-       if ($user) {
+      $user = storeUser($firstname, $lastname, $email, $password);
+      if ($user) {
             // user stored successfully
             //$response["success"] = true;
             $response["uid"] = $user["id"];
