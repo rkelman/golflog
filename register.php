@@ -27,7 +27,7 @@ if ($method != 'POST') {
     $lastname = $json_obj['lastname'];
     $email = $json_obj['email'];
     $password = $json_obj['password'];
-    $confpassword = $json_obj['confpassword'];
+    $confpassword = $json_obj['passwordconf'];
 
     //echo $name." ".$email." ".$password;
 
