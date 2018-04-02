@@ -1,7 +1,7 @@
 <?php
 include 'include/connection.php';
 include 'include/userkey.php';
-include 'include/functions.php'
+include 'include/userFunctions.php';
 
 $conn = connectDB();
 
@@ -30,7 +30,7 @@ if (isset($_POST['password']) && isset($_POST['password_conf'])) {
       echo "</head>\n";
       echo "<body>\n";
       echo "Your Password has been updated<BR>";
-      echo "<a href=\"login.php\">Go to login</a><BR>";
+      echo "<a href=\"./index.html\">Go to login</a><BR>";
     }
   } else {
     //if passwords don't match return to reset

@@ -1,6 +1,7 @@
 <?php
 include 'include/connection.php';
 include 'include/userkey.php';
+include 'include/userFunctions.php';
 
 $conn = connectDB();
 
@@ -30,18 +31,12 @@ if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
   echo "</body>\n";
   echo "</html>";
 }  elseif (isset($_POST["email"])) {
+  // should not be required since angular should take of initial request request
   $username = $_POST["email"];
   //echo $username."<BR>\n";
-  $res_sql = "SELECT * from glUsers where email = '".$username."'";
-  //echo $res_sql;
+  $isRegistered = isUserRegistered($_POST["email"]);
 
-  if (!$res_result = $conn->query($res_sql)) {
-    // Oh no! The query failed.
-    echo "<neg_mesg>Sorry, Traininglog is experiencing problems.</neg_mesg><BR>";
-    echo $res_sql;
-  }
-
-  if ($res_result->num_rows > 0) {
+  if ($isRegistered) {
     $key = createUserKey($username);
     //echo $key;
     mailUserKey($username, $key);
@@ -56,7 +51,7 @@ if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
     echo "</body>\n";
     echo "</html>";
   } else {
-    header('Location: reset.php?err=InvalidName');
+    header('Location: resetform.php?err=InvalidName');
   }
 } elseif (isset($_GET['mail']) && isset($_GET['key'])) {
   $mailID = $_GET['mail'];
