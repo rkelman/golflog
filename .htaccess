@@ -3,3 +3,4 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 Redirect "/track" "/index.html"
 Redirect "/register" "/index.html"
+Redirect "/report" "/index.html"
