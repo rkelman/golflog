@@ -67,7 +67,7 @@ include_once('log.php');
     function getActivityList($uid,$number){
       $conn = connectDB();
 
-      $sql = "SELECT practiceType, elapsedTime, practiceDateTime
+      $sql = "SELECT practiceType, elapsedTime, practiceDateTime, notes
                 FROM glPracticeLog
                 WHERE userID = $uid
                 ORDER BY practiceDateTime DESC
@@ -81,7 +81,8 @@ include_once('log.php');
           $result[] = array(
             'type' => $row['practiceType'],
             'elapsedTime' => $row['elapsedTime'],
-            'practiceDateTime' => $row['practiceDateTime']
+            'practiceDateTime' => $row['practiceDateTime'],
+            'notes' => $row['notes']
           );
         }
         $conn->close();
