@@ -74,11 +74,13 @@ include_once('log.php');
                 LIMIT $number";
 
       $getActList = $conn->query($sql);
-
+  
       if ($getActList) {
-        $result["success"]=TRUE;
+        //$result["success"]=TRUE;
+        $i = 0;
+        $result = array ('Activities' => array(),);
         while ($row = $getActList->fetch_assoc()) {
-          $result[] = array(
+          $result['Activities'][$i++] = array(
             'type' => $row['practiceType'],
             'elapsedTime' => $row['elapsedTime'],
             'practiceDateTime' => $row['practiceDateTime'],
