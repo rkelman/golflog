@@ -84,7 +84,7 @@ include_once('log.php');
             'type' => $row['practiceType'],
             'elapsedTime' => $row['elapsedTime'],
             'practiceDateTime' => $row['practiceDateTime'],
-            'notes' => $row['notes']
+            'notes' => $row['practiceNotes']
           );
         }
         $conn->close();
