@@ -78,9 +78,9 @@ include_once('log.php');
       if ($getActList) {
         //$result["success"]=TRUE;
         $i = 0;
-        $result = array ('Activities' => array(),);
+        $result = array ('' => array(),);
         while ($row = $getActList->fetch_assoc()) {
-          $result['Activities'][$i++] = array(
+          $result[][$i++] = array(
             'type' => $row['practiceType'],
             'elapsedTime' => $row['elapsedTime'],
             'practiceDateTime' => $row['practiceDateTime'],
