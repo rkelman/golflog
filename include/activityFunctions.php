@@ -92,7 +92,7 @@ include_once('log.php');
         return $result;
       } else {
           //error
-          $result["success"]=FALSE;
+          $result["error"]=TRUE;
           $result["error_msg"]="Golflog experiencing issues: Insert failed on DB";
           $result["sql"]=$sql;
           $conn->close();
