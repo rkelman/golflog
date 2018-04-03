@@ -56,7 +56,7 @@ include_once('log.php');
       } else {
         //error
         logStep('Activity', 'Failed to show Activity Summary for user ID: '.$uid);
-        $result["success"]=FALSE;
+        $result["error"]=TRUE;
         $result["error_msg"]="Golflog experiencing issues: Insert failed on DB";
         $result["sql"]=$sql;
         $conn->close();

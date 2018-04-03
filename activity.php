@@ -76,7 +76,7 @@ if (($method != 'POST') && ($method != 'GET')) {
         $number = 10;
       }
       $response = getActivityList($uid, $number);
-      if ($response["success"] == FALSE) {
+      if ($response["error"] == TRUE) {
         http_response_code(400);
       } else {
         http_response_code(200);
