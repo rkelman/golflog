@@ -80,7 +80,7 @@ include_once('log.php');
         $i = 0;
         $result = array ('' => array(),);
         while ($row = $getActList->fetch_assoc()) {
-          $result[][$i++] = array(
+          $result[""][$i++] = array(
             'type' => $row['practiceType'],
             'elapsedTime' => $row['elapsedTime'],
             'practiceDateTime' => $row['practiceDateTime'],
