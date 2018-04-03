@@ -43,9 +43,9 @@ include_once('log.php');
       $getActSumm = $conn->query($sql);
 
       if ($getActSumm) {
-        $result["success"]=TRUE;
+        $result=array();
         while ($row = $getActSumm->fetch_assoc()) {
-          $result[$row['practiceType']] = array(
+          $result[] = array(
             'type' => $row['practiceType'],
             'elapsedTime' => $row['sum_time'],
             'count' => $row['count_type']
