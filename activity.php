@@ -78,6 +78,8 @@ if (($method != 'POST') && ($method != 'GET')) {
       $response = getActivityList($uid, $number);
       if ($response["success"] == FALSE) {
         http_response_code(400);
+      } else {
+        http_response_code(200);
       }
       echo json_encode($response, JSON_PRETTY_PRINT);
     }
