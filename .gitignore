@@ -3,3 +3,4 @@ include/connection.php
 .bowerrc
 package.json
 gitcheckin.sh
+newbuild.sh
