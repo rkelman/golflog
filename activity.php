@@ -7,7 +7,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 // json response array
 $response["error"] = FALSE;
 
-if (($method != 'POST') && ($method != 'GET')) {
+if (($method != 'POST') && ($method != 'GET') && ($method != 'DELETE')) {
   $response["error"] = TRUE;
   $response["error_msg"] = "Unsupported HTTP Method ".$method." for API Activity";
   http_response_code(400);
@@ -45,6 +45,7 @@ if (($method != 'POST') && ($method != 'GET')) {
     $response["json_obj"]=$json_obj;
     $response["json_str"]=$json_str;
     $response["json_err"]=$json_err;
+    http_response_code(400);
     echo json_encode($response);
   }
 } elseif ($method == 'GET') {
@@ -85,6 +86,27 @@ if (($method != 'POST') && ($method != 'GET')) {
       }
       echo json_encode($response, JSON_PRETTY_PRINT);
     }
+  }
+} elseif ($method == 'DELETE') {
+  $json_str = file_get_contents('php://input');
+
+  // Get as an object
+  $json_obj = json_decode($json_str, TRUE);
+  //$json_err = json_last_error();
+
+  if (isset($json_obj['uid']) && isset($json_obj['activityID'])) {
+    $response = deleteActivity($json_obj['uid'], $json_obj['activityID']);
+    if ($response["error"] == TRUE) {
+      http_response_code(400);
+    } else {
+      http_response_code(200);
+    }
+    echo json_encode($response, JSON_PRETTY_PRINT);
+  } else {
+    $response["error"] = TRUE;
+    $response["error_msg"]["message"] = "Required parameters uid and/or activityID missing.";
+    http_response_code(400);
+    echo json_encode($response);
   }
 }
 ?>

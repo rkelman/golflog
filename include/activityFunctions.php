@@ -101,4 +101,32 @@ include_once('log.php');
           return $result;
       }
     }
+
+    function deleteActivity($uid, $activityID) {
+      $conn = connectDB();
+
+      $sql = "DELETE from glPracticeLog
+         WHERE userID = $uid
+           AND practiceID = $activityID";
+
+      $delActivity = $conn->query($sql);
+      if ($delActivity){
+        //successful insert
+        logStep('Activity', 'Deleted activity '.$activity.' for user ID: '.$uid);
+
+        $result["success"]=true;
+        $result["msg"]="New ".$activity." Activity Saved.";
+        $conn->close();
+        return $result;
+      } else {
+        //error
+        logStep('Activity', 'Delete failed for '.$activity.' and user ID: '.$uid);
+
+        $result["error"]=TRUE;
+        $result["error_msg"]="Golflog experiencing issues: Insert failed on DB";
+        $result["sql"]=$sql;
+        $conn->close();
+        return $result;
+      }
+    }
 ?>
