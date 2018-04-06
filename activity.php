@@ -7,7 +7,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 // json response array
 $response["error"] = FALSE;
 
-if ($method == 'POST') {
+if ($method === 'POST') {
   // Get JSON as a string
   $json_str = file_get_contents('php://input');
 
@@ -44,7 +44,7 @@ if ($method == 'POST') {
     http_response_code(400);
     echo json_encode($response);
   }
-} elseif ($method == 'DELETE') {
+} elseif ($method === 'DELETE') {
   $json_str = file_get_contents('php://input');
 
   // Get as an object
@@ -65,7 +65,7 @@ if ($method == 'POST') {
     http_response_code(400);
     echo json_encode($response);
   }
-} elseif ($method == 'GET') {
+} elseif ($method === 'GET') {
   echo "hello ".$method."\n";
   //print_r($_GET);
   if (!isset($_GET['uid']) /*|| isempty($_GET['uid'])*/) {
