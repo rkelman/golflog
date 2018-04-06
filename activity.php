@@ -7,12 +7,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 // json response array
 $response["error"] = FALSE;
 
-if (($method != 'POST') && ($method != 'GET') && ($method != 'DELETE')) {
-  $response["error"] = TRUE;
-  $response["error_msg"] = "Unsupported HTTP Method ".$method." for API Activity";
-  http_response_code(501);
-  echo json_encode($response);
-} elseif ($method == 'POST') {
+if ($method == 'POST') {
   // Get JSON as a string
   $json_str = file_get_contents('php://input');
 
@@ -109,5 +104,10 @@ if (($method != 'POST') && ($method != 'GET') && ($method != 'DELETE')) {
       echo json_encode($response, JSON_PRETTY_PRINT);
     }
   }
+} else {
+  $response["error"] = TRUE;
+  $response["error_msg"] = "Unsupported HTTP Method ".$method." for API Activity";
+  http_response_code(501);
+  echo json_encode($response);
 }
 ?>
