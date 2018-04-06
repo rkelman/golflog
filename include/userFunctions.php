@@ -69,8 +69,9 @@ include_once('log.php');
         }
     }
 
-        /**
+    /**
      * Get user by email and password
+     * Called on login
      */
     function getUserByEmailPassword($email, $password) {
         $conn = connectDB();
@@ -94,18 +95,21 @@ include_once('log.php');
               $update = $conn->query($updateLogin);
   
               $conn->close();
+              logStep('Login', 'UserID: '.$user['id'].' successfully logged in');
               //$user["error"]= FALSE;
               return $user;
             } else {
               $conn->close();
               $user["error"]=TRUE;
               $user["error_msg"]='Password was incorrect for that account.';
+              logStep('Login', 'UserID: '.$user['id'].' failed logged in because of password mismatch');
               return $user;
             }
         } else {
           $conn->close();
           $user["error"]=TRUE;
           $user["error_msg"]='No user with that email found.';
+          logStep('Login', 'UserID: '.$email.' failed logged in because no account');
           return $user;
         }
     }
