@@ -115,7 +115,7 @@ include_once('log.php');
         logStep('Activity', 'Deleted activity '.$activity.' for user ID: '.$uid);
 
         $result["success"]=true;
-        $result["msg"]="New ".$activity." Activity Saved.";
+        $result["msg"]="Successfully deleted ".$activity." activity";
         $conn->close();
         return $result;
       } else {
