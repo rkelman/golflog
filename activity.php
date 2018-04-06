@@ -1,6 +1,7 @@
 <?php
 require_once 'include/activityFunctions.php';
 require_once 'include/tokenFunctions.php';
+require_once 'include/log.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -103,6 +104,7 @@ if ($method == 'POST') {
 } else {
   $response["error"] = TRUE;
   $response["error_msg"] = "Unsupported HTTP Method ".$method." for API Activity";
+  logStep('Activity', "Unsupported HTTP Method ".$method." for API Activity");
   http_response_code(501);
   echo json_encode($response);
 }
