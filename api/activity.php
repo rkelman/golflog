@@ -1,7 +1,7 @@
 <?php
-require_once 'include/activityFunctions.php';
-require_once 'include/tokenFunctions.php';
-require_once 'include/log.php';
+require_once '../include/activityFunctions.php';
+require_once '../include/tokenFunctions.php';
+require_once '../include/log.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 

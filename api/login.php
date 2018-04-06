@@ -1,5 +1,5 @@
 <?php
-require_once 'include/userFunctions.php';
+require_once '../include/userFunctions.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
