@@ -45,9 +45,10 @@ if ($method == 'POST') {
     echo json_encode($response);
   }
 } elseif ($method == 'DELETE') {
+  
   if ((!isset($_GET['uid'])) || (!isset($_GET['activityID']))) {
     $response["error"] = TRUE;
-    $response["error_msg"] = "Invalid Activity Get call - requires uid, activityID";
+    $response["error_msg"] = "Invalid Activity Delete call - requires uid, activityID";
     http_response_code(400);
     echo json_encode($response);
   } else {
