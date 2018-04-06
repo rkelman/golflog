@@ -49,6 +49,27 @@ if (($method != 'POST') && ($method != 'GET') && ($method != 'DELETE')) {
     http_response_code(400);
     echo json_encode($response);
   }
+} elseif ($method == 'DELETE') {
+  $json_str = file_get_contents('php://input');
+
+  // Get as an object
+  $json_obj = json_decode($json_str, TRUE);
+  //$json_err = json_last_error();
+
+  if (isset($json_obj['uid']) && isset($json_obj['activityID'])) {
+    $response = deleteActivity($json_obj['uid'], $json_obj['activityID']);
+    if ($response["error"] == TRUE) {
+      http_response_code(400);
+    } else {
+      http_response_code(200);
+    }
+    echo json_encode($response, JSON_PRETTY_PRINT);
+  } else {
+    $response["error"] = TRUE;
+    $response["error_msg"]["message"] = "Required parameters uid and/or activityID missing.";
+    http_response_code(400);
+    echo json_encode($response);
+  }
 } elseif ($method == 'GET') {
   echo "hello ".$method."\n";
   //print_r($_GET);
@@ -87,27 +108,6 @@ if (($method != 'POST') && ($method != 'GET') && ($method != 'DELETE')) {
       }
       echo json_encode($response, JSON_PRETTY_PRINT);
     }
-  }
-} elseif ($method == 'DELETE') {
-  $json_str = file_get_contents('php://input');
-
-  // Get as an object
-  $json_obj = json_decode($json_str, TRUE);
-  //$json_err = json_last_error();
-
-  if (isset($json_obj['uid']) && isset($json_obj['activityID'])) {
-    $response = deleteActivity($json_obj['uid'], $json_obj['activityID']);
-    if ($response["error"] == TRUE) {
-      http_response_code(400);
-    } else {
-      http_response_code(200);
-    }
-    echo json_encode($response, JSON_PRETTY_PRINT);
-  } else {
-    $response["error"] = TRUE;
-    $response["error_msg"]["message"] = "Required parameters uid and/or activityID missing.";
-    http_response_code(400);
-    echo json_encode($response);
   }
 }
 ?>
