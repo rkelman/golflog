@@ -50,7 +50,7 @@ if (($method != 'POST') && ($method != 'GET') && ($method != 'DELETE')) {
     echo json_encode($response);
   }
 } elseif ($method == 'GET') {
-  //echo "hello ".$method."\n";
+  echo "hello ".$method."\n";
   //print_r($_GET);
   if (!isset($_GET['uid']) /*|| isempty($_GET['uid'])*/) {
     $response["error"] = TRUE;
