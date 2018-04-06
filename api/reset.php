@@ -1,6 +1,6 @@
 <?php
-include 'include/connection.php';
-include 'include/userkey.php';
+include '../include/connection.php';
+include '../include/userkey.php';
 // json response array
 //$response = array("error" => FALSE);
 $response = array();
