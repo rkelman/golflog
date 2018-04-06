@@ -45,8 +45,27 @@ if ($method == 'POST') {
     echo json_encode($response);
   }
 } elseif ($method == 'DELETE') {
-  $json_str = file_get_contents('php://input');
+  if ((!isset($_GET['uid'])) || (!isset($_GET['activityID']))) {
+    $response["error"] = TRUE;
+    $response["error_msg"] = "Invalid Activity Get call - requires uid, activityID";
+    http_response_code(400);
+    echo json_encode($response);
+  } else {
+    $uid=$_GET['uid'];
+    $activityID=$_GET['uid'];
 
+    $response = deleteActivity($uid, $activityID);
+      
+    //if getActivitySummary failed
+    if ($response["error"] == TRUE) {
+      http_response_code(400);
+    } else {
+      http_response_code(200);
+    }
+    echo json_encode($response, JSON_PRETTY_PRINT);
+  }
+  //$json_str = file_get_contents('php://input');
+  /*
   // Get json object
   $json_obj = json_decode($json_str, TRUE);
   //$json_err = json_last_error();
@@ -65,8 +84,8 @@ if ($method == 'POST') {
     http_response_code(400);
     echo json_encode($response);
   }
+  */
 } elseif ($method == 'GET') {
-  echo "hello ".$method."\n";
   //print_r($_GET);
   if ((!isset($_GET['uid'])) || (isempty($_GET['uid']))) {
     $response["error"] = TRUE;
