@@ -25,6 +25,7 @@ if (($method != 'POST') && ($method != 'GET') && ($method != 'DELETE')) {
     $uid = $json_obj['uid'];
     $activity = $json_obj['activity'];
     $subActivity = $json_obj['subActivity'];
+    $startTime = $json_obj['startTime'];
     $elapsedTime = $json_obj['elapsedTime'];
     $notes = $json_obj['notes'];
     $location = $json_obj['location'];
@@ -33,7 +34,7 @@ if (($method != 'POST') && ($method != 'GET') && ($method != 'DELETE')) {
     //$response["json_obj"]=$json_obj;
 
     //insertActivity into DB
-    $response = insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location);
+    $response = insertActivity($uid, $activity, $subActivity, $elapsedTime, $startTime, $notes, $location);
 
     echo json_encode($response, JSON_PRETTY_PRINT);
 

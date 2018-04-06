@@ -3,13 +3,13 @@ include_once('connection.php');
 include_once('log.php');
 
     //function to insert a new practice activity
-    function insertActivity($uid, $activity, $subActivity, $elapsedTime, $notes, $location) {
+    function insertActivity($uid, $activity, $subActivity, $elapsedTime, $startTime, $notes, $location) {
       $conn = connectDB();
 
       $sql = "INSERT INTO glPracticeLog
          (userID, practiceType, practiceSubType, elapsedTime, practiceDateTime, practiceNotes, location)
          VALUES
-         (".$uid.", '".$activity."','".$subActivity."', '".$elapsedTime."', NOW(), '".$notes."', '".$location."')";
+         (".$uid.", '".$activity."','".$subActivity."', '".$elapsedTime."', '".$startTime."', '".$notes."', '".$location."')";
 
       $insActivity = $conn->query($sql);
       if ($insActivity){
