@@ -3,6 +3,7 @@ require_once 'include/activityFunctions.php';
 require_once 'include/tokenFunctions.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
+echo "request method: ".$_SERVER['REQUEST_METHOD'];
 
 // json response array
 $response["error"] = FALSE;
