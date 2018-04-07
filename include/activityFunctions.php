@@ -71,7 +71,7 @@ include_once('log.php');
       $sql = "SELECT practiceID, practiceType, practiceSubType, elapsedTime, DATE_FORMAT(practiceDateTime, \"%a %b %e, %h:%m %p\") practiceTime, practiceNotes
                 FROM glPracticeLog
                 WHERE userID = $uid
-                ORDER BY practiceTime DESC
+                ORDER BY practiceDateTime DESC
                 LIMIT $number";
 
       $getActList = $conn->query($sql);
