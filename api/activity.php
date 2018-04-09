@@ -53,7 +53,7 @@ if ($method == 'POST') {
     echo json_encode($response);
   } else {
     $uid=$_GET['uid'];
-    $activityID=$_GET['uid'];
+    $activityID=$_GET['activityID'];
 
     $response = deleteActivity($uid, $activityID);
       
