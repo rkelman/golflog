@@ -76,7 +76,12 @@ if ($method == 'POST') {
     $uid=$_GET['uid'];
 
     if ($_GET['type'] == 'summary') {
-      $response = getActivitySummary($uid);
+      if (!isset($_GET['period'])) {
+        $period = "month";
+      } else {
+        $period = $_GET['period'];
+      }
+      $response = getActivitySummary($uid, $period);
       
       //if getActivitySummary failed
       if ($response["error"] == TRUE) {

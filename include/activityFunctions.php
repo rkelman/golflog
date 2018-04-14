@@ -32,12 +32,13 @@ include_once('log.php');
       }
     }
 
-    function getActivitySummary($uid) {
+    function getActivitySummary($uid, $period) {
       $conn = connectDB();
 
       $sql = "SELECT practiceType, count(practiceType) count_type, SEC_TO_TIME(SUM(TIME_TO_SEC(elapsedTime))) sum_time
                 FROM glPracticeLog
                 WHERE userID = $uid
+                  AND practiceDateTime > SUBDATE(now(), interval 1 ".$period.")
                 GROUP BY practiceType
                 ORDER BY sum_time DESC";
 
