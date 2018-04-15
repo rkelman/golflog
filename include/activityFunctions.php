@@ -35,7 +35,7 @@ include_once('log.php');
     function getActivitySummary($uid, $period) {
       $conn = connectDB();
 
-      $sql = "SELECT practiceType, count(practiceType) count_type, SEC_TO_TIME(SUM(TIME_TO_SEC(elapsedTime))) sum_time
+      $sql = "SELECT practiceType, count(practiceType) count_type, SEC_TO_TIME(SUM(TIME_TO_SEC(elapsedTime))) sum_time, SUM(elapsedTime) sum_rawtime
                 FROM glPracticeLog
                 WHERE userID = $uid
                   AND practiceDateTime > SUBDATE(now(), interval 1 ".$period.")
@@ -50,7 +50,8 @@ include_once('log.php');
           $result[] = array(
             'type' => $row['practiceType'],
             'elapsedTime' => $row['sum_time'],
-            'count' => $row['count_type']
+            'count' => $row['count_type'],
+            'sumRawTime' => $row['sum_rawtime']
           );
         }
         $conn->close();
