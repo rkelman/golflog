@@ -1,7 +1,7 @@
 <?php
 require_once '../include/log.php';
 
-//$logs = getLogs();
+$logs = getLogs();
 
 echo "<table>\n";
 echo "<th><td>log ID</td><td>Date Time</td><td>App</td><td>Message</td></th>\n";
