@@ -15,7 +15,7 @@ function logStep($appName, $msg) {
 
   $log_conn->close();
 }
-/*
+
 function getLogs() {
   $log_conn = connectDB();
 
@@ -23,13 +23,13 @@ function getLogs() {
      order by logDateTime DESC
      limit 100";
 
-  $getLogList = $conn->query($logSql);
+  $getLogList = $log_conn->query($logSql);
   
   if ($getLogList) {
     //$result["success"]=TRUE;
     $i = 0;
     $result = array ();
-    while ($row = $getActList->fetch_assoc()) {
+    while ($row = $getLogList->fetch_assoc()) {
       $result[] = array(
         'logID' => $row['logID'],
         'logDateTime' => $row['logDateTime'],
@@ -41,5 +41,5 @@ function getLogs() {
     return $result;
   }
 }
-*/
+
 ?>
