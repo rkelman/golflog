@@ -1,5 +1,5 @@
 <?php
-//require_once '../include/log.php';
+require_once '../include/log.php';
 
 //$logs = getLogs();
 

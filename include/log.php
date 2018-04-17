@@ -15,7 +15,7 @@ function logStep($appName, $msg) {
 
   $log_conn->close();
 }
-
+/*
 function getLogs() {
   $log_conn = connectDB();
 
@@ -41,5 +41,5 @@ function getLogs() {
     return $result;
   }
 }
-
+*/
 ?>
