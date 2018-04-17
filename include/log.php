@@ -15,4 +15,31 @@ function logStep($appName, $msg) {
 
   $log_conn->close();
 }
+
+function getLogs() {
+  $log_conn = connectDB();
+
+  $logSql = "SELECT * from glAppLogs
+     order by logDateTime DESC
+     limit 100";
+
+  $getLogList = $conn->query($logSql);
+  
+  if ($getLogList) {
+    //$result["success"]=TRUE;
+    $i = 0;
+    $result = array ();
+    while ($row = $getActList->fetch_assoc()) {
+      $result[] = array(
+        'logID' => $row['logID'],
+        'logDateTime' => $row['logDateTime'],
+        'app' => $row['app'],
+        'message' => $row['message']
+      );
+    }
+    $log_conn->close();
+    return $result;
+  }
+}
+
 ?>
