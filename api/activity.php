@@ -31,7 +31,11 @@ if ($method == 'POST') {
 
     //insertActivity into DB
     $response = insertActivity($uid, $activity, $subActivity, $elapsedTime, $startTime, $notes, $location);
-
+    if ($response["error"] == TRUE) {
+      http_response_code(400);
+    } else {
+      http_response_code(200);
+    }
     echo json_encode($response, JSON_PRETTY_PRINT);
 
   } else {

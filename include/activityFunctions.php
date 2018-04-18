@@ -24,7 +24,7 @@ include_once('log.php');
         //error
         logStep('Activity', 'Insert failed for new '.$activity.' for user ID: '.$uid.'; '.$sql);
 
-        $result["success"]=false;
+        $result["error"]=TRUE;
         $result["error_msg"]="Golflog experiencing issues: Insert failed on DB";
         $result["sql"]=$sql;
         $conn->close();
