@@ -5,6 +5,7 @@ include_once('log.php');
     //function to insert a new practice activity
     function insertActivity($uid, $activity, $subActivity, $elapsedTime, $startTime, $notes, $location) {
       $conn = connectDB();
+      $notes = $conn->real_escape_string($notes);
 
       $sql = "INSERT INTO glPracticeLog
          (userID, practiceType, practiceSubType, elapsedTime, practiceDateTime, practiceNotes, location)
