@@ -12,32 +12,21 @@ $json_str = file_get_contents('php://input');
 $json_obj = json_decode($json_str, TRUE);
 
 if (isset($json_obj['email']) && !isset($json_obj['key'])) {
+  $user = $json_obj['email'];
 
-  $conn = connectDB();
-
-  $username = $json_obj["email"];
-  //echo $username."<BR>\n";
-  $res_sql = "SELECT * from glUsers where email = '".$username."'";
-  //echo $res_sql;
-
-  if (!$res_result = $conn->query($res_sql)) {
-    // Oh no! The query failed.
-    echo "<neg_mesg>Sorry, Traininglog is experiencing problems.</neg_mesg><BR>";
-    echo $res_sql;
-  }
-
-  if ($res_result->num_rows > 0) {
+  if (isUserRegistered($user)) {
     $key = createUserKey($username);
     //echo $key;
     mailUserKey($username, $key);
 
     $response["success"] = "TRUE";
     $response["step"]=1;
-    $response["message"] = "A link to reset your password has been sent to your email";
+    $response["msg"] = "A link to reset your password has been sent to your email";
     echo json_encode($response);
   } else {
     $response["success"] = "FALSE";
-    $response["message"] = "Sorry, The email entered is not registered to a Golflog user.";
+    $response["msg"] = "Sorry, The email entered is not registered to a Golflog user.";
+    http_response_code(400);
     echo json_encode($response);
   }
 } elseif (isset($json_obj['email']) && isset($json_obj['key']) && !isset($json_obj['password'])) {
@@ -48,7 +37,7 @@ if (isset($json_obj['email']) && !isset($json_obj['key'])) {
     //allow user to update password
     $response["success"] = "TRUE";
     $response["step"]=2;
-    $response["message"] = "Please update your password.";
+    $response["msg"] = "Please update your password.";
     echo json_encode($response);
   } else {
     //Allow user to enter new password_conf
