@@ -1,5 +1,6 @@
 <?php
 include '../include/connection.php';
+include '../include/userFunctions.php';
 include '../include/userkey.php';
 
 // json response array
