@@ -39,7 +39,7 @@ if ($method != 'POST') {
       http_response_code(400);
       echo json_encode($response);
     }
-  } elseif (isset($json_obj['email']) && isset($json_obj['key']) && !isset($json_obj['password'])) {
+  } /*elseif (isset($json_obj['email']) && isset($json_obj['key']) && !isset($json_obj['password'])) {
     $mailID = $_json_obj['mail'];
     $keyID = $_json_obj['key'];
 
@@ -82,7 +82,7 @@ if ($method != 'POST') {
       $response["message"] = "The key you are using is invalid or expired";
       echo json_encode($response);
     }
-  }
+  }*/
 } 
 
 ?>
