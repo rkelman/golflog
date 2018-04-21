@@ -75,9 +75,9 @@ if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
     }
     echo "<form action=\"resetpass.php\" method=\"post\">\n";
     echo "Password: ";
-    echo "<input type=\"password\" name=\"password\"><BR>\n";
+    echo "<input type=\"password\" name=\"password\"><BR><BR>\n";
     echo "Confirm Password: ";
-    echo "<input type=\"password\" name=\"password_conf\"><BR>\n";
+    echo "<input type=\"password\" name=\"password_conf\"><BR><BR>\n";
     echo "<input type=\"hidden\" id=\"mailID\" name=\"mail\" value=\"".$mailID."\">\n";
     echo "<input type=\"hidden\" id=\"keyID\" name=\"key\" value=\"".$keyID."\">\n";
     echo "<input type=\"submit\" name=\"Reset Password\"><BR>\n";
