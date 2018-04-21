@@ -22,16 +22,19 @@ if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
       echo "<a href=\"register.php\">Create New Account</a><BR>";
     }
   }
+  echo "<div>";
   echo "Please enter e-mail to reset password<BR><BR>";
   echo "<form action=\"reset.php\" method=\"post\">\n";
   echo "eMail: ";
   echo "<input type=\"text\" name=\"email\"><BR>\n";
   echo "<input type=\"submit\" name=\"Request Reset\"><BR>\n";
   echo "</form>\n";
+  echo "</div>\n";
   echo "</body>\n";
   echo "</html>";
 }  elseif (isset($_POST["email"])) {
   // should not be required since angular should take of initial request request
+  // will handle any users that inadvertantly bypass initial form in angular
   $username = $_POST["email"];
   //echo $username."<BR>\n";
   $isRegistered = isUserRegistered($_POST["email"]);
