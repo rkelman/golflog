@@ -3,7 +3,7 @@ include 'include/connection.php';
 include 'include/userkey.php';
 include 'include/userFunctions.php';
 
-$conn = connectDB();
+//$conn = connectDB();
 
 print_r($_POST);
 
@@ -14,8 +14,8 @@ if (!isempty($_POST['password']) && !isempty($_POST['password_conf'])) {
   $pass2 = $_POST['password_conf'];
   $mailID = $_POST['mail'];
   $keyID = $_POST['key'];
-  echo "pass: ".$pass1."<BR>\n";
-  echo "mail: ".$mailID."<BR>\n";
+  //echo "pass: ".$pass1."<BR>\n";
+  //echo "mail: ".$mailID."<BR>\n";
   if ($pass1 == $pass2) {
     //if passwords match
 
@@ -45,6 +45,6 @@ if (!isempty($_POST['password']) && !isempty($_POST['password_conf'])) {
   header('Location: reset.php?mail='.$_POST['mail'].'&key='.$_POST['key'].'&err=passNull');
 }
 
-$conn->close();
+//$conn->close();
 
 ?>
