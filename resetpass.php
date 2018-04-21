@@ -1,5 +1,5 @@
 <?php
 
-echo "works";
+echo "reset pass works";
 
 ?>
