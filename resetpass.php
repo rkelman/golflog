@@ -1,9 +1,6 @@
 <?php
-include 'include/connection.php';
 include 'include/userkey.php';
 include 'include/userFunctions.php';
-
-//$conn = connectDB();
 
 //print_r($_POST);
 
@@ -47,7 +44,5 @@ if (!isempty($_POST['password']) && !isempty($_POST['password_conf'])) {
   //if either password was sent over null return to reset
   header('Location: reset.php?mail='.$_POST['mail'].'&key='.$_POST['key'].'&err=passNull');
 }
-
-//$conn->close();
 
 ?>
