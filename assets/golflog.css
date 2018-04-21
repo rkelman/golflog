@@ -4,6 +4,9 @@ body {
     font-size: 100%;
   }
   div {
+    color: black;
+    font-family: verdana;
+    font-size: 100%;
     margin: auto;
     width: 300px;
     background-color: #e8e8e8;
