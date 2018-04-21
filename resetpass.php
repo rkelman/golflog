@@ -6,7 +6,7 @@
 
 //if no post or get; first time to page
 
-if (!isempty($_POST['password']) && !isempty($_POST['password_conf'])) {
+if ((!isempty($_POST['password'])) && (!isempty($_POST['password_conf']))) {
   echo "got here";
   //if passwords are both set/not null load variables
   $pass1 = $_POST['password'];
