@@ -54,13 +54,15 @@ include_once('log.php');
 
         $conn = connectDB();
 
-        $sql = "Update tlUsers SET password='".$hashPass."', updated_at = now() ".
+        $sql = "Update glUsers SET password='".$hashPass."', ".
+             "updated_at = now() ".
+             "salt = '".$salt."'".
            "WHERE email ='".$mailID."'";
 
-        $sqlIns=$conn->query($sql);
+        $sqlUpd=$conn->query($sql);
 
         // check for successful store
-        if ($sqlIns) {
+        if ($sqlUpd) {
           $conn->close();
           return true;
         } else {
