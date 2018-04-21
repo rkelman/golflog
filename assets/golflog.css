@@ -7,6 +7,10 @@ body {
     margin: auto;
     width: 300px;
     background-color: #e8e8e8;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
 }
   pos_mesg {
      color: green;
