@@ -6,16 +6,10 @@
 
 //if no post or get; first time to page
 
-if ((!isempty($_POST['password'])) && (!isempty($_POST['password_conf']))) {
-  echo "got here";
-  //if passwords are both set/not null load variables
-  $pass1 = $_POST['password'];
-  $pass2 = $_POST['password_conf'];
-  $mailID = $_POST['mail'];
-  $keyID = $_POST['key'];
-  echo "pass: ".$pass1."<BR>\n";
-  echo "mail: ".$mailID."<BR>\n";
-/*
+if ((isempty($_POST['password'])) || (isempty($_POST['password_conf']))) {
+  //if either password was sent over null return to reset
+  header('Location: reset.php?mail='.$_POST['mail'].'&key='.$_POST['key'].'&err=passNull');
+  /*
   if ($pass1 == $pass2) {
     //if passwords match
 
@@ -41,10 +35,16 @@ if ((!isempty($_POST['password'])) && (!isempty($_POST['password_conf']))) {
     header('Location: reset.php?mail='.$mailID.'&key='.$keyID.'&err=passMismatch');
   }
 */
-} else {
+} elseif ((!isempty($_POST['password'])) && (!isempty($_POST['password_conf']))) {
   echo "got here";
-  //if either password was sent over null return to reset
-  header('Location: reset.php?mail='.$_POST['mail'].'&key='.$_POST['key'].'&err=passNull');
+  //if passwords are both set/not null load variables
+  $pass1 = $_POST['password'];
+  $pass2 = $_POST['password_conf'];
+  $mailID = $_POST['mail'];
+  $keyID = $_POST['key'];
+  echo "pass: ".$pass1."<BR>\n";
+  echo "mail: ".$mailID."<BR>\n";
+  echo "got here";
 }
 
 ?>
