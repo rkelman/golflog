@@ -1,0 +1,25 @@
+body {
+    color: black;
+    font-family: verdana;
+    font-size: 100%;
+  }
+  div {
+    margin: auto;
+    width: 300px;
+    background-color: #e8e8e8;
+}
+  pos_mesg {
+     color: green;
+     font-family: verdana;
+     font-size: 133%;
+  }
+  neg_mesg {
+     color: red;
+     font-family: verdana;
+     font-size: 110%;
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }

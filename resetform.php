@@ -59,10 +59,12 @@ if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
   if (validateUserKey($mailID, $keyID)) {
     //Allow user to enter new password_conf
     echo "<html>\n";
-    echo "<head>\n<link rel=\"stylesheet\" href=\"traininglog.css\">\n";
+    echo "<head>\n<link rel=\"stylesheet\" href=\"assets\golflog.css\">\n";
     echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
     echo "</head>\n";
     echo "<body>\n";
+    echo "<img src=\"assets\GolflogLogo.png\">";
+    echo "<div>";
     if (isset($_GET['err'])) {
       $err = $_GET['err'];
       if ($err == "passMismatch") {
@@ -80,6 +82,7 @@ if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
     echo "<input type=\"hidden\" id=\"keyID\" name=\"key\" value=\"".$keyID."\">\n";
     echo "<input type=\"submit\" name=\"Reset Password\"><BR>\n";
     echo "</form>\n";
+    echo "</div>\n";
     echo "</body>\n";
     echo "</html>";
   } else {
