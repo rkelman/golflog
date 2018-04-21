@@ -25,10 +25,11 @@ function mailUserKey($name, $key) {
 
   $message = "As you requested here is the link to reset your password
   golflog.daxhund.com/resetform.php?mail=".$name."&key=".$key;
-  echo 'Name: '.$name;
-  echo 'Subject: '.$subject;
-  echo 'Message: '.$message;
-  echo 'Headers: '.$headers;
+  //troubleshooting - 042118
+  //echo 'Name: '.$name;
+  //echo 'Subject: '.$subject;
+  //echo 'Message: '.$message;
+  //echo 'Headers: '.$headers;
   mail($name, $subject, $message, $headers);
 }
 

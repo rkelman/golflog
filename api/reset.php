@@ -26,7 +26,8 @@ if ($method != 'POST') {
 
     if (isUserRegistered($user)) {
       $key = createUserKey($user);
-      echo "key: ".$key."<BR>";
+      //troubleshooting
+      //echo "key: ".$key."<BR>";
       mailUserKey($user, $key);
 
       $response["success"] = "TRUE";
