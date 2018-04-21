@@ -8,6 +8,7 @@ include 'include/userFunctions.php';
 //print_r($_POST);
 
 //if no post or get; first time to page
+
 if (!isempty($_POST['password']) && !isempty($_POST['password_conf'])) {
   //if passwords are both set/not null load variables
   $pass1 = $_POST['password'];
@@ -16,6 +17,7 @@ if (!isempty($_POST['password']) && !isempty($_POST['password_conf'])) {
   $keyID = $_POST['key'];
   //echo "pass: ".$pass1."<BR>\n";
   //echo "mail: ".$mailID."<BR>\n";
+/*
   if ($pass1 == $pass2) {
     //if passwords match
 
@@ -40,6 +42,7 @@ if (!isempty($_POST['password']) && !isempty($_POST['password_conf'])) {
     //if passwords don't match return to reset
     header('Location: reset.php?mail='.$mailID.'&key='.$keyID.'&err=passMismatch');
   }
+*/
 } else {
   //if either password was sent over null return to reset
   header('Location: reset.php?mail='.$_POST['mail'].'&key='.$_POST['key'].'&err=passNull');
