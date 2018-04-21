@@ -49,7 +49,7 @@ include_once('log.php');
      */
     function storeResetPassword($password, $mailID) {
         $hash = hashSSHA($password);
-        $encrypted_password = $hash["encrypted"]; // encrypted password
+        $hashPass = $hash["encrypted"]; // encrypted password
         $salt = $hash["salt"]; // salt
 
         $conn = connectDB();
