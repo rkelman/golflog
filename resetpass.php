@@ -5,7 +5,7 @@ include 'include/userFunctions.php';
 
 //$conn = connectDB();
 
-print_r($_POST);
+//print_r($_POST);
 
 //if no post or get; first time to page
 if (!isempty($_POST['password']) && !isempty($_POST['password_conf'])) {
