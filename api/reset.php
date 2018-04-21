@@ -25,9 +25,9 @@ if ($method != 'POST') {
     $user = $json_obj['email'];
 
     if (isUserRegistered($user)) {
-      $key = createUserKey($username);
+      $key = createUserKey($user);
       echo "key: ".$key."<BR>";
-      mailUserKey($username, $key);
+      mailUserKey($user, $key);
 
       $response["success"] = "TRUE";
       $response["step"]=1;
