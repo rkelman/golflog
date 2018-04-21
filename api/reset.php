@@ -1,5 +1,4 @@
 <?php
-include '../include/connection.php';
 include '../include/userFunctions.php';
 include '../include/userkey.php';
 
@@ -27,7 +26,7 @@ if ($method != 'POST') {
 
     if (isUserRegistered($user)) {
       $key = createUserKey($username);
-      //echo $key;
+      echo "key: ".$key."<BR>";
       mailUserKey($username, $key);
 
       $response["success"] = "TRUE";
