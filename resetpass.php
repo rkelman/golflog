@@ -7,6 +7,7 @@ include 'include/userFunctions.php';
 //if no post or get; first time to page
 
 if (!isempty($_POST['password']) && !isempty($_POST['password_conf'])) {
+  echo "got here";
   //if passwords are both set/not null load variables
   $pass1 = $_POST['password'];
   $pass2 = $_POST['password_conf'];
@@ -41,6 +42,7 @@ if (!isempty($_POST['password']) && !isempty($_POST['password_conf'])) {
   }
 */
 } else {
+  echo "got here";
   //if either password was sent over null return to reset
   header('Location: reset.php?mail='.$_POST['mail'].'&key='.$_POST['key'].'&err=passNull');
 }
