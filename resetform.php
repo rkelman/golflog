@@ -1,19 +1,18 @@
 <?php
-include 'include/connection.php';
+//include 'include/connection.php';
 include 'include/userkey.php';
 include 'include/userFunctions.php';
 
-$conn = connectDB();
-
-//print_r($_GET);
+//$conn = connectDB();
 
 //if no post or get; first time to page
 if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
   echo "<html>\n";
-  echo "<head>\n<link rel=\"stylesheet\" href=\"traininglog.css\">\n";
+  echo "<head>\n<link rel=\"stylesheet\" href=\"golflog.css\">\n";
   echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
   echo "</head>\n";
   echo "<body>\n";
+  echo "<img src=\"assets\GolflogLogo.png\">";
   if (isset($_GET["err"])) {
     if ($_GET["err"]=="InvalidKey") {
       echo "<neg_mesg>Sorry, The key that you used appears to be expired, please request a new one.</neg_mesg><BR>";
@@ -45,12 +44,15 @@ if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
     mailUserKey($username, $key);
 
     echo "<html>\n";
-    echo "<head>\n<link rel=\"stylesheet\" href=\"traininglog.css\">\n";
+    echo "<head>\n<link rel=\"stylesheet\" href=\"assets\golflog.css\">\n";
     echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
     echo "</head>\n";
     echo "<body>\n";
+    echo "<img src=\"assets\GolflogLogo.png\">";
+    echo "<div>";
     echo "A link to reset your password has been sent to your email<BR><BR>";
     echo "Please check your email to complete the reset process<BR>\n";
+    echo "</div>\n";
     echo "</body>\n";
     echo "</html>";
   } else {
@@ -97,6 +99,6 @@ if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
   }
 }
 
-$conn->close();
+//$conn->close();
 
 ?>
