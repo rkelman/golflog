@@ -1,4 +1,5 @@
 <?php
+include_once 'include/userFunctions.php';
 
 if ((empty($_POST['password'])) || (empty($_POST['password_conf']))) {
   //if either password was sent over null return to reset
