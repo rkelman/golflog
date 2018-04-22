@@ -5,7 +5,7 @@ if ((empty($_POST['password'])) || (empty($_POST['password_conf']))) {
   header('Location: resetform.php?mail='.$_POST['mail'].'&key='.$_POST['key'].'&err=passNull');
 } else {
   if ($_POST['password'] == $_POST['password_conf']) {
-    if (storeResetPassword($pass1, $mailID)) {
+    if (storeResetPassword($_POST['password'], $_POST['mail'])) {
       //if update worked
       echo "<html>\n";
       echo "<head>\n<link rel=\"stylesheet\" href=\"assets\golflog.css\">\n";
