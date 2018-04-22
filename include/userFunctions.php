@@ -55,7 +55,7 @@ include_once('log.php');
         $conn = connectDB();
 
         $sql = "Update glUsers SET password='".$hashPass."', ".
-             "updated_at = now() ".
+             "updated_at = now(), ".
              "salt = '".$salt."'".
            "WHERE email ='".$mailID."'";
 
