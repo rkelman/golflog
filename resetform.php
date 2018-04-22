@@ -8,7 +8,7 @@ include 'include/userFunctions.php';
 //if no post or get; first time to page
 if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
   echo "<html>\n";
-  echo "<head>\n<link rel=\"stylesheet\" href=\"golflog.css\">\n";
+  echo "<head>\n<link rel=\"stylesheet\" href=\"assets\golflog.css\">\n";
   echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
   echo "</head>\n";
   echo "<body>\n";
