@@ -23,7 +23,7 @@ if (!isset($_POST["email"]) && !isset($_GET['mail'])) {
   }
   echo "<div>";
   echo "Please enter e-mail to reset password<BR><BR>";
-  echo "<form action=\"reset.php\" method=\"post\">\n";
+  echo "<form action=\"resetform.php\" method=\"post\">\n";
   echo "eMail: ";
   echo "<input type=\"text\" name=\"email\"><BR>\n";
   echo "<input type=\"submit\" name=\"Request Reset\"><BR>\n";
