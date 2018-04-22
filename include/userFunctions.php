@@ -61,8 +61,6 @@ include_once('log.php');
 
         $sqlUpd=$conn->query($sql);
 
-        echo "SQL: ".$sql;
-
         // check for successful store
         if ($sqlUpd) {
           $conn->close();
